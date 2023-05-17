@@ -55,24 +55,9 @@ public class TileSpiritualProjector extends ModTileEntity implements ITickable{
     }
 
     @Override
-    public NBTTagCompound serializeNBT() {
-        NBTTagCompound compound = new NBTTagCompound();
-        compound.setTag("inventory", this.inventory.serializeNBT());
-        compound.setInteger("progress", this.progress);
-        return compound;
-    }
-
-    @Override
-    public void deserializeNBT(NBTTagCompound nbt) {
-        this.inventory.deserializeNBT(nbt.getCompoundTag("inventory"));
-        this.progress = nbt.getInteger("progress");
-    }
-
-    @Override
     public void readFromNBT(NBTTagCompound compound) {
         this.inventory.deserializeNBT(compound.getCompoundTag("inventory"));
         this.progress = compound.getInteger("progress");
-        this.inventory.onContentsChanged(0);
         super.readFromNBT(compound);
     }
 
@@ -153,6 +138,7 @@ public class TileSpiritualProjector extends ModTileEntity implements ITickable{
         @Override
         protected void onContentsChanged(int slot) {
             super.onContentsChanged(slot);
+            instance.markDirty();
             world.markAndNotifyBlock(pos,null, world.getBlockState(pos),world.getBlockState(pos),2);
         }
 
