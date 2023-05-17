@@ -1,0 +1,24 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "   ",
+        "pgp",
+        "psp"
+    ],
+    "key" : {
+        "g" : {
+            "item" : "minecraft:glass"
+        },
+        "p" : {
+            "type" : "forge:ore_dict",
+            "ore" : "plankWood"
+        },
+        "s" : {
+            "item" : "minecraft:stone_slab",
+            "data" : 0
+        }
+    },
+    "result" : {
+        "item" : "iinteg:spiritual_projector"
+    }
+}

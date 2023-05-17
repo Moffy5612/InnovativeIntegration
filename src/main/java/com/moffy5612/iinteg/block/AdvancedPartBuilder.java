@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.moffy5612.iinteg.IInteg;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedPartBuilder;
@@ -15,6 +16,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -70,5 +72,11 @@ public class AdvancedPartBuilder extends ModBlockBase{
         Set<String>requiredMods = new HashSet<String>();
         requiredMods.add("tconstruct");
         return requiredMods;
+    }
+
+    @Override
+    @Nullable
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new TileAdvancedPartBuilder();
     }
 }

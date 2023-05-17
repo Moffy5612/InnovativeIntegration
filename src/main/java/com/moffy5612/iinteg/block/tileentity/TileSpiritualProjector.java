@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.moffy5612.iinteg.IInteg;
 import com.moffy5612.iinteg.capability.item.CapabilityCrystalBall;
 import com.moffy5612.iinteg.recipe.ModRecipeHandler;
 import com.moffy5612.iinteg.recipe.ModRecipeListBase.ModRecipe;
@@ -73,6 +72,7 @@ public class TileSpiritualProjector extends ModTileEntity implements ITickable{
     public void readFromNBT(NBTTagCompound compound) {
         this.inventory.deserializeNBT(compound.getCompoundTag("inventory"));
         this.progress = compound.getInteger("progress");
+        this.inventory.onContentsChanged(0);
         super.readFromNBT(compound);
     }
 
@@ -86,7 +86,6 @@ public class TileSpiritualProjector extends ModTileEntity implements ITickable{
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
         NBTTagCompound compound = pkt.getNbtCompound();
-        IInteg.LOGGER.info(compound.toString());
         this.inventory.deserializeNBT(compound.getCompoundTag("inventory"));
         this.progress = compound.getInteger("progress");
     }

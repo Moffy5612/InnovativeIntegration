@@ -68,6 +68,7 @@ public class CrystalBall extends ModItemBase implements IModNBTItem{
             if(capabilityCrystalBall != null){
                 capabilityCrystalBall.hasOwner = true;
                 capabilityCrystalBall.ownerName = playerIn.getDisplayNameString();
+                ;
             }
         };
         return ActionResult.newResult(EnumActionResult.SUCCESS, playerIn.inventory.getCurrentItem());
