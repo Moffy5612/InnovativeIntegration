@@ -1,0 +1,12 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model":"iinteg:spiritual_projector",
+        "textures":{
+            "particle":"iinteg:block/spiritual_projector/spiritual_projector_side"
+        }
+    },
+    "variants":{
+        "normal":[{}]
+    }
+}

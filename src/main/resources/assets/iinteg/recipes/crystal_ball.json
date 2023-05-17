@@ -1,0 +1,20 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "fff",
+        "fqf",
+        "fff"
+    ],
+    "key" : {
+        "q" : {
+            "item" : "minecraft:quartz"
+        },
+        "f" : {
+            "item" : "minecraft:flint"
+        }
+    },
+    "result" : {
+        "item" : "iinteg:crystal_ball",
+        "data" : 0
+    }
+}

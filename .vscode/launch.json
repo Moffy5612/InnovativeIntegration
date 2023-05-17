@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "command": "./gradlew runClient",
+            "name": "Run Minecraft as Client",
+            "request": "launch",
+            "type": "node-terminal"
+        }
+    ]
+}

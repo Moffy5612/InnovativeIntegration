@@ -1,0 +1,16 @@
+#Creative Tab
+itemGroup.iinteg=Innovative Integration
+
+#TileEntity Name
+tile.iinteg:spiritual_projector.name=Spiritual Projector
+
+#Item Name
+item.iinteg:crystal_ball.name=Crystal Ball
+item.iinteg:etheric_ingot.name=Etheric Ingot
+
+#Item Description
+item.iinteg:crystal_ball.desc=It's so beautiful you can't even look at it...
+item.iinteg:crystal_ball_synchronized.desc=Spirit Synchronized : 
+
+#TConstruct Modifier Name
+modifier.iinteg.psionic_armor.name=Psionic

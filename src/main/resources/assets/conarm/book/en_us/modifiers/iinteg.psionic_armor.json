@@ -1,0 +1,22 @@
+{
+    "armormodifier": "iinteg.psionic_armor",
+    "text": [
+      {
+        "text": "Install exosuit system! Your armor casts spells when it detects certain conditions."
+      }
+    ],
+
+    "effects": [
+      "Casts spells when certain conditions:",
+      "chest plate -> on damaged",
+      "leggings -> on wearing",
+      "boots -> on jumping",
+      "Single level"
+    ],
+
+    "demoArmor": [
+      "conarm:chestplate",
+      "conarm:leggings",
+      "conarm:boots"
+    ]
+}
