@@ -1,4 +1,4 @@
-package com.moffy5612.iinteg.integration.jei.spiritualprojector;
+package com.moffy5612.iinteg.integration.jei.category;
 
 import javax.annotation.Nullable;
 
@@ -6,6 +6,7 @@ import com.moffy5612.iinteg.IInteg;
 import com.moffy5612.iinteg.Reference;
 import com.moffy5612.iinteg.block.SpiritualProjector;
 import com.moffy5612.iinteg.handler.BlockHandler;
+import com.moffy5612.iinteg.integration.jei.ModRecipeWrapper;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -18,7 +19,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class SpiritualProjectorCategory implements IRecipeCategory<SpiritualProjectorRecipeWrapper>{
+public class SpiritualProjectorCategory implements IRecipeCategory<ModRecipeWrapper>{
     public static final String NAME = SpiritualProjector.NAME;
 
     private IDrawable background;
@@ -77,7 +78,7 @@ public class SpiritualProjectorCategory implements IRecipeCategory<SpiritualProj
     }
 
     @Override
-    public void setRecipe(IRecipeLayout layout, SpiritualProjectorRecipeWrapper wrapper, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout layout, ModRecipeWrapper wrapper, IIngredients ingredients) {
         IGuiItemStackGroup group = layout.getItemStacks();
         group.init(0, true, 22, 0);
         group.init(1, true, 22, 23);

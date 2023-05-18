@@ -1,4 +1,4 @@
-package com.moffy5612.iinteg.integration.jei.spiritualprojector;
+package com.moffy5612.iinteg.integration.jei;
 
 import java.util.Collections;
 import java.util.List;
@@ -8,12 +8,12 @@ import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
 
-public class SpiritualProjectorRecipeWrapper implements IRecipeWrapper{
+public class ModRecipeWrapper implements IRecipeWrapper{
     
     public List<List<ItemStack>> inputList;
     public ItemStack output;
 
-    public SpiritualProjectorRecipeWrapper(List<ItemStack> inputList, ItemStack output){
+    public ModRecipeWrapper(List<ItemStack> inputList, ItemStack output){
         this.inputList = Collections.singletonList(inputList);
         this.output = output;
     }
