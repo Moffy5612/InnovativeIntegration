@@ -14,7 +14,7 @@ import net.minecraft.block.BlockContainer;
 public class ModBlockHandler {
     public static final Set<BlockContainer> REG_BLOCKS = new HashSet<BlockContainer>();
 
-    public static final BlockMaterial BLOCK_MATERIAL = new BlockMaterial();
+    public static final BlockMaterial ETHERIC_MACHINE_CASING = new BlockMaterial(0);
     public static final SpiritualProjector SPIRITUAL_PROJECTOR = new SpiritualProjector();
 
     public static final AdvancedCastingTable ADVANCED_CASTING_TABLE = new AdvancedCastingTable();
