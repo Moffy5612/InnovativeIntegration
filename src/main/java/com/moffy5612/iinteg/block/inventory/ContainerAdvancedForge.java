@@ -5,10 +5,9 @@ import com.moffy5612.iinteg.block.tileentity.TileAdvancedForge;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 
-public class ContainerAdvancedForge extends Container{
+public class ContainerAdvancedForge extends ModContainerBase{
 
     public TileAdvancedForge taf;
 

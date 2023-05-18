@@ -76,7 +76,7 @@ public class TileAdvancedPartBuilder extends ModTileEntity implements ITickable{
 
     @Override
     public void update() {
-        this.updateSlot();
+        
     }
 
     public void updateSlot(){

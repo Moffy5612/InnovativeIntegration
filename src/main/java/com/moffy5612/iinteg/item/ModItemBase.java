@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.annotation.Nonnull;
 
 import com.moffy5612.iinteg.Reference;
-import com.moffy5612.iinteg.handler.ItemHandler;
+import com.moffy5612.iinteg.handler.ModItemHandler;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Loader;
@@ -26,7 +26,7 @@ public class ModItemBase extends Item{
             if(!Loader.isModLoaded(id))foundAllMods = false;
         }
         if(foundAllMods){
-            ItemHandler.REG_ITEMS.add(this);
+            ModItemHandler.REG_ITEMS.add(this);
         }
         return foundAllMods;
     }

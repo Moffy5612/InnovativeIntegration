@@ -7,10 +7,11 @@ import com.moffy5612.iinteg.item.CrystalBall;
 import com.moffy5612.iinteg.item.Material;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 
-public class ItemHandler {
+public class ModItemHandler {
     public static final Set<Item> REG_ITEMS = new HashSet<Item>();
-    public static final Set<Item> REG_BLOCK_ITEMS = new HashSet<Item>();
+    public static final Set<ItemBlock> REG_BLOCK_ITEMS = new HashSet<ItemBlock>();
     
     public static final Material MATERIAL = new Material();
     public static final CrystalBall CRYSTAL_BALL = new CrystalBall();

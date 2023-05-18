@@ -8,13 +8,15 @@ import javax.annotation.Nullable;
 
 import com.moffy5612.iinteg.Reference;
 import com.moffy5612.iinteg.block.tileentity.ModTileEntity;
-import com.moffy5612.iinteg.handler.BlockHandler;
-import com.moffy5612.iinteg.handler.ItemHandler;
+import com.moffy5612.iinteg.handler.ModBlockHandler;
+import com.moffy5612.iinteg.handler.ModItemHandler;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Loader;
 
@@ -40,8 +42,10 @@ public class ModBlockBase extends BlockContainer{
             if(!Loader.isModLoaded(id))foundAllMods = false;
         }
         if(foundAllMods){
-            BlockHandler.REG_BLOCKS.add(this);
-            ItemHandler.REG_BLOCK_ITEMS.add(new ItemBlock(this).setRegistryName(Reference.MOD_ID, name));
+            ModBlockHandler.REG_BLOCKS.add(this);
+            ItemBlock itemBlock = new ItemBlock(this);
+            itemBlock.setRegistryName(Reference.MOD_ID, name);
+            ModItemHandler.REG_BLOCK_ITEMS.add(itemBlock);
             ModTileEntity te = this.te;
             if(te != null)te.register();
         }
@@ -61,5 +65,10 @@ public class ModBlockBase extends BlockContainer{
 
     public void registerSpecialRenderer(){
         
+    }
+
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state) {
+        return EnumBlockRenderType.MODEL;
     }
 }

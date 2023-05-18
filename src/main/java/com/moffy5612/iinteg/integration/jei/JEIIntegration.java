@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.moffy5612.iinteg.client.gui.GuiSpiritualProjector;
-import com.moffy5612.iinteg.handler.BlockHandler;
+import com.moffy5612.iinteg.handler.ModBlockHandler;
 import com.moffy5612.iinteg.integration.jei.category.SpiritualProjectorCategory;
 import com.moffy5612.iinteg.recipe.ModRecipeHandler;
 import com.moffy5612.iinteg.recipe.ModRecipeListBase.ModRecipe;
@@ -28,7 +28,7 @@ public class JEIIntegration implements IModPlugin{
             SpiritualProjectorWrapperList.add(new ModRecipeWrapper(recipe.material, recipe.result));
         }
         registry.addRecipes(SpiritualProjectorWrapperList, SpiritualProjectorCategory.NAME);
-        registry.addRecipeCatalyst(new ItemStack(BlockHandler.SPIRITUAL_PROJECTOR), SpiritualProjectorCategory.NAME);
+        registry.addRecipeCatalyst(new ItemStack(ModBlockHandler.SPIRITUAL_PROJECTOR), SpiritualProjectorCategory.NAME);
         registry.addRecipeClickArea(GuiSpiritualProjector.class, 81, 37, 22, 15, SpiritualProjectorCategory.NAME);
         
     }

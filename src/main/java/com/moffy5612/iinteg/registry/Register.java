@@ -1,7 +1,7 @@
 package com.moffy5612.iinteg.registry;
 
-import com.moffy5612.iinteg.handler.BlockHandler;
-import com.moffy5612.iinteg.handler.ItemHandler;
+import com.moffy5612.iinteg.handler.ModBlockHandler;
+import com.moffy5612.iinteg.handler.ModItemHandler;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -14,7 +14,7 @@ public class Register {
     @SubscribeEvent
     public void onBlockRegister(RegistryEvent.Register<Block> event){
         IForgeRegistry<Block> registry = event.getRegistry();
-        for(BlockContainer block : BlockHandler.REG_BLOCKS){
+        for(BlockContainer block : ModBlockHandler.REG_BLOCKS){
             registry.register(block);
         }
     }
@@ -22,10 +22,10 @@ public class Register {
     @SubscribeEvent
     public void onItemRegister(RegistryEvent.Register<Item> event){
         IForgeRegistry<Item> registry = event.getRegistry();
-        for(Item item : ItemHandler.REG_ITEMS){
+        for(Item item : ModItemHandler.REG_ITEMS){
             registry.register(item);
         }
-        for(Item item : ItemHandler.REG_BLOCK_ITEMS){
+        for(Item item : ModItemHandler.REG_BLOCK_ITEMS){
             registry.register(item);
         }
     }

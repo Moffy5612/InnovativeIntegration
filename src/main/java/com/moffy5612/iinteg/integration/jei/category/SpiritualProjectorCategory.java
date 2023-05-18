@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 import com.moffy5612.iinteg.IInteg;
 import com.moffy5612.iinteg.Reference;
 import com.moffy5612.iinteg.block.SpiritualProjector;
-import com.moffy5612.iinteg.handler.BlockHandler;
+import com.moffy5612.iinteg.handler.ModBlockHandler;
 import com.moffy5612.iinteg.integration.jei.ModRecipeWrapper;
 
 import mezz.jei.api.IGuiHelper;
@@ -35,7 +35,7 @@ public class SpiritualProjectorCategory implements IRecipeCategory<ModRecipeWrap
                 41
             ).setTextureSize(123, 41)
             .build();
-        this.icon = helper.createDrawableIngredient(new ItemStack(BlockHandler.SPIRITUAL_PROJECTOR));
+        this.icon = helper.createDrawableIngredient(new ItemStack(ModBlockHandler.SPIRITUAL_PROJECTOR));
         this.arrow = helper.drawableBuilder(
             new ResourceLocation(Reference.MOD_ID, "textures/jei/jei_"+NAME+".png"),
             101,

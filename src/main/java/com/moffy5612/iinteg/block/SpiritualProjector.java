@@ -7,7 +7,7 @@ import com.moffy5612.iinteg.block.tileentity.TileSpiritualProjector;
 import com.moffy5612.iinteg.capability.item.CapabilityCrystalBall;
 import com.moffy5612.iinteg.client.gui.IIntegGuiList;
 import com.moffy5612.iinteg.client.render.tileentity.SpiritualProjectorRenderer;
-import com.moffy5612.iinteg.handler.ItemHandler;
+import com.moffy5612.iinteg.handler.ModItemHandler;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -17,7 +17,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -47,7 +46,7 @@ public class SpiritualProjector extends ModBlockBase{
             EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 
         ItemStack stack = playerIn.getHeldItem(hand);
-        if(stack.getItem().equals(ItemHandler.CRYSTAL_BALL)){
+        if(stack.getItem().equals(ModItemHandler.CRYSTAL_BALL)){
             CapabilityCrystalBall capabilityCrystalBall = stack.getCapability(CapabilityCrystalBall.CAPABILITY_CRYSTAL_BALL, null);
             if(capabilityCrystalBall != null){
                 if(capabilityCrystalBall.hasOwner){
@@ -80,11 +79,6 @@ public class SpiritualProjector extends ModBlockBase{
                 worldIn.spawnEntity(entityItem);
             }
         }
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
     }
 
     @Override

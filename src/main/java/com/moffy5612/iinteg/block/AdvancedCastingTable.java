@@ -9,8 +9,8 @@ import javax.annotation.Nullable;
 import com.google.common.collect.ImmutableList;
 import com.moffy5612.iinteg.Reference;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedCastingTable;
-import com.moffy5612.iinteg.handler.BlockHandler;
-import com.moffy5612.iinteg.handler.ItemHandler;
+import com.moffy5612.iinteg.handler.ModBlockHandler;
+import com.moffy5612.iinteg.handler.ModItemHandler;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -50,8 +50,10 @@ public class AdvancedCastingTable extends BlockCasting{
             if(!Loader.isModLoaded(id))foundAllMods = false;
         }
         if(foundAllMods){
-            BlockHandler.REG_BLOCKS.add(this);
-            ItemHandler.REG_BLOCK_ITEMS.add(new ItemBlock(this).setRegistryName(Reference.MOD_ID, NAME));
+            ModBlockHandler.REG_BLOCKS.add(this);
+            ItemBlock itemBlock = new ItemBlock(this);
+            itemBlock.setRegistryName(Reference.MOD_ID, NAME);
+            ModItemHandler.REG_BLOCK_ITEMS.add(itemBlock);
             new TileAdvancedCastingTable().register();
         }
         return foundAllMods;

@@ -5,7 +5,7 @@ import java.util.List;
 import com.moffy5612.iinteg.IInteg;
 import com.moffy5612.iinteg.capability.ModCapabilityBase;
 import com.moffy5612.iinteg.client.gui.IIntegGuiHandler;
-import com.moffy5612.iinteg.handler.CapabilityHandler;
+import com.moffy5612.iinteg.handler.ModCapabilityHandler;
 import com.moffy5612.iinteg.integration.tconstruct.TConstructIntegration;
 import com.moffy5612.iinteg.registry.Register;
 
@@ -21,7 +21,7 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event){
         MinecraftForge.EVENT_BUS.register(new Register());
 
-        for(ModCapabilityBase capability : CapabilityHandler.REG_CAPABILITIES){
+        for(ModCapabilityBase capability : ModCapabilityHandler.REG_CAPABILITIES){
             capability.register();
         }
         
