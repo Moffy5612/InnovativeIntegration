@@ -1,0 +1,17 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "eee",
+        "e e",
+        "eee"
+    ],
+    "key" : {
+        "e" : {
+            "item" : "iinteg:material",
+            "data" : 0
+        }
+    },
+    "result" : {
+        "item" : "iinteg:etheric_machine_casing"
+    }
+}
