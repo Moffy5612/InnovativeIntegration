@@ -6,16 +6,14 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
-public class Material extends ModItemBase implements IModMultiTexturedItem{
+public class MysticalCircuit extends ModItemBase implements IModMultiTexturedItem{
     
-    public static final String NAME = "material";
+    public static final String NAME = "mystical_circuit";
     public static final String[] TYPES = {
-        "etheric_ingot",
-        "reim_converter_anode",
-        "reim_converter_cathode"
+        "mystical_circuit_basic"
     };
 
-    public Material(){
+    public MysticalCircuit(){
         super(NAME);
         this.setMaxDamage(0);
         this.setHasSubtypes(true);

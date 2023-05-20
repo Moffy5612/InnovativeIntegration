@@ -24,5 +24,18 @@ public class SpiritualProjectorRecipe extends ModRecipeListBase{
             new ItemStack(Items.IRON_INGOT, 1, 0)
         );
 
+        this.addRecipe(
+            Material.TYPES[1],
+            new ItemStack(ModItemHandler.MATERIAL, 1, 1), 
+            crystalBall,
+            new ItemStack(Items.REDSTONE, 1, 0)
+        );
+
+        this.addRecipe(
+            Material.TYPES[2],
+            new ItemStack(ModItemHandler.MATERIAL, 1, 2), 
+            crystalBall,
+            new ItemStack(Items.GLOWSTONE_DUST, 1, 0)
+        );
     }
 }

@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/handheld",
+    "textures": {
+      "layer0": "iinteg:item/mystical_circuit_basic"
+    }
+  }

@@ -20,8 +20,6 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.oredict.OreDictionary;
-
 public class TileSpiritualProjector extends ModTileEntity implements ITickable{
     
     public static final int PROGRESS_MAX = 256;
@@ -163,11 +161,7 @@ public class TileSpiritualProjector extends ModTileEntity implements ITickable{
                 }
                 if(empty != null)return empty;
             }else if(slot == 1){
-                int[] oreDictIds = OreDictionary.getOreIDs(stack);
-                for(int oreDictId : oreDictIds){
-                    if(oreDictId == OreDictionary.getOreID("ingotIron"))return super.insertItem(slot, stack, simulate);
-                }
-                if(empty != null)return empty;
+                return super.insertItem(slot, stack, simulate);
             }else if(slot == 2){
                 if(empty != null)return empty;
             }

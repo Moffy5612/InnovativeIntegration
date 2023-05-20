@@ -2,7 +2,7 @@
     "parent":"block/block",
     "textures": {
         "outer_face":"iinteg:block/machine/etheric_machine_casing_face",
-        "inner_face":"iinteg:block/machine/machine_core"
+        "inner_face":"iinteg:block/machine/machine_casing_core"
     },
     "elements": [
         {
