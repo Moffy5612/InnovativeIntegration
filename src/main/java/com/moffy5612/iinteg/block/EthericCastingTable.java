@@ -37,7 +37,7 @@ public class EthericCastingTable extends BlockCasting{
 
     @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-        items.add(new ItemStack(this, 1, 0));
+        if(itemIn.equals(Reference.MOD_CREATIVE_TAB))items.add(new ItemStack(this, 1, 0));
     }
 
     public void register() {
