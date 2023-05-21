@@ -25,10 +25,9 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event){
         MinecraftForge.EVENT_BUS.register(new Register());
         
+        AnnotationUtil.initHandler(ModCapabilityHandler.class);
         AnnotationUtil.initHandler(ModItemHandler.class);
         AnnotationUtil.initHandler(ModBlockHandler.class);
-        AnnotationUtil.initHandler(ModCapabilityHandler.class);
-        AnnotationUtil.initHandler(ModRecipeHandler.class);
 
         for(ModCapabilityBase capability : ModCapabilityHandler.REG_CAPABILITIES){
             capability.register();
@@ -38,6 +37,7 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event){
+        AnnotationUtil.initHandler(ModRecipeHandler.class);
         NetworkRegistry.INSTANCE.registerGuiHandler(IInteg.INSTANCE, new IIntegGuiHandler());
 
         TConstructIntegration.init();

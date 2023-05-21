@@ -29,11 +29,11 @@ public class AnnotationUtil {
                         IInteg.LOGGER.warning(e.getLocalizedMessage());
                     }
                 }
-            }
-            try{
-                field.set(null, null);
-            }catch(IllegalAccessException | IllegalArgumentException e){
-                IInteg.LOGGER.warning(e.getLocalizedMessage());
+                try{
+                    field.set(null, null);
+                }catch(IllegalAccessException | IllegalArgumentException e){
+                    IInteg.LOGGER.warning(e.getLocalizedMessage());
+                }
             }
         }
     }
