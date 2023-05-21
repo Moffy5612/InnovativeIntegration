@@ -8,11 +8,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import slimeknights.tconstruct.smeltery.tileentity.TileCastingTable;
 
-public class TileAdvancedCastingTable extends TileCastingTable{
+public class TileEthericCastingTable extends TileCastingTable{
 
     public static final String NAME = "advanced_casting_table";
 
-    public TileAdvancedCastingTable(){
+    public TileEthericCastingTable(){
         super();
     }
 

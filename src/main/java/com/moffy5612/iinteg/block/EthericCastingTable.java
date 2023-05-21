@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableList;
 import com.moffy5612.iinteg.Reference;
-import com.moffy5612.iinteg.block.tileentity.TileAdvancedCastingTable;
+import com.moffy5612.iinteg.block.tileentity.TileEthericCastingTable;
 import com.moffy5612.iinteg.handler.ModBlockHandler;
 import com.moffy5612.iinteg.handler.ModItemHandler;
 
@@ -17,6 +17,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -27,11 +28,11 @@ import net.minecraftforge.fml.common.Loader;
 import slimeknights.tconstruct.shared.block.BlockTable;
 import slimeknights.tconstruct.smeltery.block.BlockCasting;
 
-public class AdvancedCastingTable extends BlockCasting{
+public class EthericCastingTable extends BlockCasting{
 
-    public static final String NAME = "advanced_casting_table";
+    public static final String NAME = "etheric_casting_table";
 
-    public AdvancedCastingTable() {
+    public EthericCastingTable() {
         super();
         this.setRegistryName(Reference.MOD_ID, NAME);
         this.setUnlocalizedName(Reference.MOD_ID+":"+NAME);
@@ -54,7 +55,7 @@ public class AdvancedCastingTable extends BlockCasting{
             ItemBlock itemBlock = new ItemBlock(this);
             itemBlock.setRegistryName(Reference.MOD_ID, NAME);
             ModItemHandler.REG_BLOCK_ITEMS.add(itemBlock);
-            new TileAdvancedCastingTable().register();
+            new TileEthericCastingTable().register();
         }
         return foundAllMods;
     }
@@ -77,6 +78,16 @@ public class AdvancedCastingTable extends BlockCasting{
     @Override
     @Nullable
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileAdvancedCastingTable();
+        return new TileEthericCastingTable();
     }
+
+    @Override
+    public BlockRenderLayer getBlockLayer() {
+        return BlockRenderLayer.TRANSLUCENT;
+    }
+
+    @Override
+	public boolean isOpaqueCube(IBlockState state){
+		return false;
+	}
 }

@@ -1,5 +1,6 @@
 {
     "parent":"block/block",
+    "ambientocclusion": false,
     "textures": {
         "outer_face":"iinteg:block/machine/etheric_machine_casing_face",
         "inner_face":"iinteg:block/machine/machine_casing_core"

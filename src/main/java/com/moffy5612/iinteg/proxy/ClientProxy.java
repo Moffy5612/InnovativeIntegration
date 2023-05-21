@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.moffy5612.iinteg.block.ModBlockBase;
 import com.moffy5612.iinteg.client.render.ItemRender;
+import com.moffy5612.iinteg.event.ModModelBakeEvent;
 import com.moffy5612.iinteg.handler.ModBlockHandler;
 
 import net.minecraft.block.BlockContainer;
@@ -23,6 +24,7 @@ public class ClientProxy extends CommonProxy{
     public void preInit(FMLPreInitializationEvent event){
         super.preInit(event);
         MinecraftForge.EVENT_BUS.register(new ItemRender());
+        MinecraftForge.EVENT_BUS.register(new ModModelBakeEvent());
         
         for(BlockContainer block : ModBlockHandler.REG_BLOCKS){
             if(block instanceof ModBlockBase){

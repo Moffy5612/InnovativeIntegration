@@ -1,0 +1,31 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "ete",
+        "cmc",
+        "ehe"
+    ],
+    "key" : {
+        "t" :{
+            "item" : "tconstruct:casting",
+            "data" : 0
+        },
+        "m" : {
+            "item" : "iinteg:etheric_machine_casing"
+        },
+        "c" : {
+            "item" : "iinteg:mystical_circuit",
+            "data" : 0
+        },
+        "h":{
+            "item" : "minecraft:hopper"
+        },
+        "e" : {
+            "item" : "iinteg:material",
+            "data" : 0
+        }
+    },
+    "result" : {
+        "item" : "iinteg:etheric_casting_table"
+    }
+}

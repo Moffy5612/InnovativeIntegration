@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "particle": "iinteg:block/machine/etheric_casting_table/etheric_casting_table_side"
+    },
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "type":{
+      "table":{
+        "model": "iinteg:etheric_casting_table"
+      }
+    },
+    "inventory":{
+      "model": "iinteg:etheric_casting_table"
+    },
+    "normal":{
+      "model": "iinteg:etheric_casting_table"
+    }
+  }
+}
