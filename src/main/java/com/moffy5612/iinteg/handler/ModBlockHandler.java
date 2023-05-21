@@ -14,10 +14,10 @@ import net.minecraft.block.BlockContainer;
 public class ModBlockHandler {
     public static final Set<BlockContainer> REG_BLOCKS = new HashSet<BlockContainer>();
 
-    public static final BlockMaterial ETHERIC_MACHINE_CASING = new BlockMaterial(0);
-    public static final SpiritualProjector SPIRITUAL_PROJECTOR = new SpiritualProjector();
+    public static BlockContainer ETHERIC_MACHINE_CASING = new BlockMaterial(0);
+    public static BlockContainer SPIRITUAL_PROJECTOR = new SpiritualProjector();
 
-    public static final EthericCastingTable ETHERIC_CASTING_TABLE = new EthericCastingTable();
-    public static final AdvancedPartBuilder ADVANCED_PART_BUILDER = new AdvancedPartBuilder();
-    public static final AdvancedForge ADVANCED_FORGE = new AdvancedForge();
+    public static BlockContainer ETHERIC_CASTING_TABLE = new EthericCastingTable();
+    public static BlockContainer ADVANCED_PART_BUILDER = new AdvancedPartBuilder();
+    public static BlockContainer ADVANCED_FORGE = new AdvancedForge();
 }

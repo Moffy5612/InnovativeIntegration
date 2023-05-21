@@ -1,9 +1,5 @@
 package com.moffy5612.iinteg.block;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.moffy5612.iinteg.IInteg;
@@ -58,14 +54,6 @@ public class AdvancedPartBuilder extends ModBlockBase{
                 worldIn.spawnEntity(entityItem);
             }
         }
-    }
-
-    @Override
-    @Nonnull
-    public Set<String> getRequiredMods() {
-        Set<String>requiredMods = new HashSet<String>();
-        requiredMods.add("tconstruct");
-        return requiredMods;
     }
 
     @Override

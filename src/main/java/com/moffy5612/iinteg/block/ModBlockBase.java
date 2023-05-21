@@ -1,9 +1,5 @@
 package com.moffy5612.iinteg.block;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.moffy5612.iinteg.Reference;
@@ -18,7 +14,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Loader;
 
 public class ModBlockBase extends BlockContainer{
 
@@ -36,25 +31,13 @@ public class ModBlockBase extends BlockContainer{
         this.te = te;
     }
 
-    public boolean register(){
-        boolean foundAllMods = true;
-        for(String id : this.getRequiredMods()){
-            if(!Loader.isModLoaded(id))foundAllMods = false;
-        }
-        if(foundAllMods){
-            ModBlockHandler.REG_BLOCKS.add(this);
-            ItemBlock itemBlock = new ItemBlock(this);
-            itemBlock.setRegistryName(Reference.MOD_ID, name);
-            ModItemHandler.REG_BLOCK_ITEMS.add(itemBlock);
-            ModTileEntity te = this.te;
-            if(te != null)te.register();
-        }
-        return foundAllMods;
-    }
-
-    @Nonnull
-    public Set<String> getRequiredMods() {
-        return new HashSet<>();
+    public void register(){
+        ModBlockHandler.REG_BLOCKS.add(this);
+        ItemBlock itemBlock = new ItemBlock(this);
+        itemBlock.setRegistryName(Reference.MOD_ID, name);
+        ModItemHandler.REG_BLOCK_ITEMS.add(itemBlock);
+        ModTileEntity te = this.te;
+        if(te != null)te.register();
     }
     
     @Override
