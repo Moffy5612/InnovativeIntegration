@@ -1,5 +1,7 @@
 package com.moffy5612.iinteg.recipe;
 
+import com.moffy5612.iinteg.misc.annotation.IIntegContentInstance;
+
 public class ModRecipeHandler {
-    public static final SpiritualProjectorRecipe SPIRITUAL_PROJECTOR_RECIPE = new SpiritualProjectorRecipe();
+    @IIntegContentInstance(contentClass = SpiritualProjectorRecipe.class) public static SpiritualProjectorRecipe SPIRITUAL_PROJECTOR_RECIPE;
 }

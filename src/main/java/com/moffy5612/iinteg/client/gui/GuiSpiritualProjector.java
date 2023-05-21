@@ -4,8 +4,8 @@ import com.moffy5612.iinteg.Reference;
 import com.moffy5612.iinteg.block.inventory.ContainerSpiritualProjector;
 import com.moffy5612.iinteg.block.tileentity.TileSpiritualProjector;
 
-import mods.flammpfeil.slashblade.client.renderer.GlStateManager;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;

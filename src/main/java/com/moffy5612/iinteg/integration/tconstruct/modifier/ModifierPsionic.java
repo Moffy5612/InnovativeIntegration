@@ -2,7 +2,6 @@ package com.moffy5612.iinteg.integration.tconstruct.modifier;
 
 import com.moffy5612.iinteg.Reference;
 
-import c4.conarm.lib.modifiers.ArmorModifierTrait;
 import c4.conarm.lib.utils.RecipeMatchHolder;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -19,12 +18,14 @@ import vazkii.psi.api.spell.SpellContext;
 import vazkii.psi.common.core.handler.PlayerDataHandler;
 import vazkii.psi.common.item.ItemCAD;
 
-public class ModifierPsionic extends ArmorModifierTrait{
+public class ModifierPsionic extends ModArmorModifierBase{
     public static final String NAME = Reference.MOD_ID+".psionic";
 
     public ModifierPsionic(){
         super(NAME, 0x5752CC);
         RecipeMatchHolder.addItem(this, "gemPsi", 1, 1);
+
+        this.register();
     }
 
     @Override

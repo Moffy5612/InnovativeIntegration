@@ -4,13 +4,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockRenderLayer;
 
-public class BlockMaterial extends ModBlockBase{
-    public static final String[] NAMES = {
-        "etheric_machine_casing"
-    };
+public class EthericMachineCasing extends ModBlockBase{
+    public static final String NAME = "etheric_machine_casing";
 
-    public BlockMaterial(int nameNum){
-        super(Material.IRON, NAMES[nameNum], null);
+    public EthericMachineCasing(){
+        super(Material.IRON, NAME, null);
         this.register();
     }
 
