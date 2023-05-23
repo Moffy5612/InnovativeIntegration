@@ -1,4 +1,4 @@
-package com.moffy5612.iinteg.integration.tconstruct.capability;
+package com.moffy5612.iinteg.capability;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

@@ -1,7 +1,7 @@
-package com.moffy5612.iinteg.integration.tconstruct.event;
+package com.moffy5612.iinteg.event;
 
 import com.moffy5612.iinteg.Reference;
-import com.moffy5612.iinteg.integration.tconstruct.capability.TinkersArmorCapability;
+import com.moffy5612.iinteg.capability.TinkersArmorCapability;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
