@@ -6,6 +6,7 @@ import com.moffy5612.iinteg.integration.tconstruct.capability.TinkersArmorCapabi
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.tinkering.ITinkerable;
 
@@ -15,7 +16,8 @@ public class CapabilityEvent {
     @SubscribeEvent
     public void attachItemCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
         if (event.getObject().getItem() instanceof ITinkerable) {
-            event.addCapability(TINKERS_SOCKETABLE_TOOL, new TinkersArmorCapability(event.getObject()));
+            if(Loader.isModLoaded("conarm") && Loader.isModLoaded("psi"))
+                event.addCapability(TINKERS_SOCKETABLE_TOOL, new TinkersArmorCapability(event.getObject()));
         }
     }
 }
