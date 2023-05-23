@@ -1,7 +1,7 @@
-package com.moffy5612.iinteg.event;
+package com.moffy5612.iinteg.integration.tconstruct.event;
 
 import com.moffy5612.iinteg.Reference;
-import com.moffy5612.iinteg.capability.TinkersArmorCapability;
+import com.moffy5612.iinteg.integration.tconstruct.capability.ArmorPSICastableCapability;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -17,7 +17,7 @@ public class TConstructCapabilityEvent {
     public void attachItemCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
         if (event.getObject().getItem() instanceof ITinkerable) {
             if(Loader.isModLoaded("psi"))
-                event.addCapability(TINKERS_SOCKETABLE_TOOL, new TinkersArmorCapability(event.getObject()));
+                event.addCapability(TINKERS_SOCKETABLE_TOOL, new ArmorPSICastableCapability(event.getObject()));
         }
     }
 }

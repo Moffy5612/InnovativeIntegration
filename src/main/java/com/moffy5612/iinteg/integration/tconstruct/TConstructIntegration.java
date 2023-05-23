@@ -1,7 +1,7 @@
 package com.moffy5612.iinteg.integration.tconstruct;
 
-import com.moffy5612.iinteg.event.TConstructCapabilityEvent;
 import com.moffy5612.iinteg.integration.tconstruct.book.conarm.ArmorModifierSectionTransformer;
+import com.moffy5612.iinteg.integration.tconstruct.event.TConstructCapabilityEvent;
 import com.moffy5612.iinteg.integration.tconstruct.handler.ModTraitHandler;
 import com.moffy5612.iinteg.misc.util.AnnotationUtil;
 

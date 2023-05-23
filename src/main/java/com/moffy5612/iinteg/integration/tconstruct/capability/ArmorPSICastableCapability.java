@@ -1,4 +1,4 @@
-package com.moffy5612.iinteg.capability;
+package com.moffy5612.iinteg.integration.tconstruct.capability;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -21,13 +21,13 @@ import javax.annotation.Nullable;
 
 import com.moffy5612.iinteg.integration.tconstruct.modifier.ModifierPsionic;
 
-public class TinkersArmorCapability implements ISpellAcceptor, ISocketableCapability, IPsiBarDisplay, ICapabilityProvider {
+public class ArmorPSICastableCapability implements ISpellAcceptor, ISocketableCapability, IPsiBarDisplay, ICapabilityProvider {
     private static final String TAG_BULLET_PREFIX = "bullet";
     private static final String TAG_SELECTED_SLOT = "selectedSlot";
 
     public final ItemStack stack;
 
-    public TinkersArmorCapability(ItemStack stack) {
+    public ArmorPSICastableCapability(ItemStack stack) {
         this.stack = stack;
     }
 
