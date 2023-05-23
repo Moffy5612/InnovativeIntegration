@@ -8,7 +8,6 @@ import com.moffy5612.iinteg.IInteg;
 import com.moffy5612.iinteg.Reference;
 import com.moffy5612.iinteg.capability.ModCapabilityProvider;
 import com.moffy5612.iinteg.capability.item.CapabilityCrystalBall;
-import com.moffy5612.iinteg.capability.item.IModNBTItem;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +21,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
-public class CrystalBall extends ModItemBase implements IModNBTItem{
+public class CrystalBall extends ModItemBase{
     public static final String NAME = "crystal_ball";
     public static final String[] TYPES = {
         "crystal_ball",
@@ -88,11 +87,6 @@ public class CrystalBall extends ModItemBase implements IModNBTItem{
     @Override
     @Nullable
     public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable NBTTagCompound nbt) {
-        return this.getCapabilityProvider();
-    }
-
-    @Override
-    public ModCapabilityProvider getCapabilityProvider() {
         return new ModCapabilityProvider(new CapabilityCrystalBall());
     }
 }
