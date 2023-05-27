@@ -1,0 +1,32 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "rar",
+        "sss",
+        "gcg"
+    ],
+    "key" : {
+        "r" : {
+            "item" : "minecraft:redstone"
+        },
+        "a" : {
+            "item" : "iinteg:material",
+            "data" : 1
+        },
+        "s" : {
+            "item":"minecraft:stone",
+            "data":0
+        },
+        "g" : {
+            "item":"minecraft:glowstone_dust"
+        },
+        "c" : {
+            "item":"iinteg:material",
+            "data":2
+        }
+    },
+    "result" : {
+        "item" : "iinteg:arcane_circuit",
+        "data" : 0
+    }
+}

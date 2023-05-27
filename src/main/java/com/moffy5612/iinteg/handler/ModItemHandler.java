@@ -5,7 +5,8 @@ import java.util.Set;
 
 import com.moffy5612.iinteg.item.CrystalBall;
 import com.moffy5612.iinteg.item.Material;
-import com.moffy5612.iinteg.item.MysticalCircuit;
+import com.moffy5612.iinteg.item.ArcaneCircuit;
+import com.moffy5612.iinteg.item.ArcaneCondenser;
 import com.moffy5612.iinteg.misc.annotation.IIntegContentInstance;
 
 import net.minecraft.item.Item;
@@ -16,7 +17,7 @@ public class ModItemHandler {
     public static final Set<ItemBlock> REG_BLOCK_ITEMS = new HashSet<ItemBlock>();
     
     @IIntegContentInstance(contentClass = Material.class) public static Item MATERIAL;
-    @IIntegContentInstance(contentClass = MysticalCircuit.class) public static Item MYSTICAL_CIRCUIT;
+    @IIntegContentInstance(contentClass = ArcaneCircuit.class) public static Item ARCANE_CIRCUIT;
+    @IIntegContentInstance(contentClass = ArcaneCondenser.class)public static Item ARCANE_CONDENSER;
     @IIntegContentInstance(contentClass = CrystalBall.class) public static Item CRYSTAL_BALL;
-    
 }

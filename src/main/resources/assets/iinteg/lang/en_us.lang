@@ -11,7 +11,8 @@ item.iinteg:crystal_ball.name=Crystal Ball
 item.iinteg:etheric_ingot.name=Etheric Ingot
 item.iinteg:reim_converter_anode.name=Re-Im Converter(Anode)
 item.iinteg:reim_converter_cathode.name=Re-Im Converter(Cathode)
-item.iinteg:mystical_circuit_basic.name=Mystical Circuit
+item.iinteg:arcane_circuit_basic.name=Arcane Circuit
+item.iinteg:arcane_condenser_etheric.name=Etheric Arcane Condenser
 
 #Item Description
 item.iinteg:crystal_ball.desc=It's so beautiful you can't even look at it...
