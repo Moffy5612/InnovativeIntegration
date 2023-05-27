@@ -16,7 +16,7 @@ public class TConstructCapabilityEvent {
     @SubscribeEvent
     public void attachItemCapabilities(AttachCapabilitiesEvent<ItemStack> event) {
         if (event.getObject().getItem() instanceof ITinkerable) {
-            if(Loader.isModLoaded("psi"))
+            if(Loader.isModLoaded("conarm") && Loader.isModLoaded("psi"))
                 event.addCapability(TINKERS_SOCKETABLE_TOOL, new ArmorPSICastableCapability(event.getObject()));
         }
     }
