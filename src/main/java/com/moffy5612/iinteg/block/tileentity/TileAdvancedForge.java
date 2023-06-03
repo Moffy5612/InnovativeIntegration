@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileAdvancedForge extends ModTileEntity implements ITickable{
+public class TileAdvancedForge extends ModTileEntityBase implements ITickable{
     public TRFItemStackHandler inventory;
     public boolean canExtractMaterials;
 

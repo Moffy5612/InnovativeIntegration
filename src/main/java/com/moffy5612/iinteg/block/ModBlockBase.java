@@ -3,7 +3,7 @@ package com.moffy5612.iinteg.block;
 import javax.annotation.Nullable;
 
 import com.moffy5612.iinteg.Reference;
-import com.moffy5612.iinteg.block.tileentity.ModTileEntity;
+import com.moffy5612.iinteg.block.tileentity.ModTileEntityBase;
 import com.moffy5612.iinteg.handler.ModBlockHandler;
 import com.moffy5612.iinteg.handler.ModItemHandler;
 
@@ -20,9 +20,9 @@ public abstract class ModBlockBase extends BlockContainer{
     public String name;
 
     @Nullable
-    public ModTileEntity te;
+    public ModTileEntityBase te;
 
-    public ModBlockBase(Material material, String name, ModTileEntity te){
+    public ModBlockBase(Material material, String name, ModTileEntityBase te){
         super(material);
         this.setRegistryName(Reference.MOD_ID, name);
         this.setUnlocalizedName(Reference.MOD_ID+":"+name);
@@ -36,7 +36,7 @@ public abstract class ModBlockBase extends BlockContainer{
         ItemBlock itemBlock = new ItemBlock(this);
         itemBlock.setRegistryName(Reference.MOD_ID, name);
         ModItemHandler.REG_BLOCK_ITEMS.add(itemBlock);
-        ModTileEntity te = this.te;
+        ModTileEntityBase te = this.te;
         if(te != null)te.register();
     }
     

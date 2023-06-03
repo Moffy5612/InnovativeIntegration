@@ -18,7 +18,7 @@ import slimeknights.tconstruct.library.smeltery.ICast;
 import slimeknights.tconstruct.library.tools.IPattern;
 import slimeknights.tconstruct.library.utils.ToolBuilder;
 
-public class TileAdvancedPartBuilder extends ModTileEntity implements ITickable{
+public class TileAdvancedPartBuilder extends ModTileEntityBase implements ITickable{
     public TRPBItemStackHandler inventory;
     public boolean canExtractMaterials;
 

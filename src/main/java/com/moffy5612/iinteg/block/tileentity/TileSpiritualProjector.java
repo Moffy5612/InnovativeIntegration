@@ -20,7 +20,7 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-public class TileSpiritualProjector extends ModTileEntity implements ITickable{
+public class TileSpiritualProjector extends ModTileEntityBase implements ITickable{
     
     public static final int PROGRESS_MAX = 256;
     public static final String NAME = "spiritual_projector";
