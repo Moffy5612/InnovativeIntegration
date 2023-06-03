@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.world.World;
 
-public class ModBlockBase extends BlockContainer{
+public abstract class ModBlockBase extends BlockContainer{
 
     public String name;
 
