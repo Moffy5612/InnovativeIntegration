@@ -1,6 +1,8 @@
 package com.moffy5612.iinteg.misc;
 
-public enum ModTier {
+import net.minecraft.util.IStringSerializable;
+
+public enum ModTier implements IStringSerializable{
     ETHERIC(0, "etheric"),
     ASTRAL(1, "astral"),
     CAUSAL(2, "causal");

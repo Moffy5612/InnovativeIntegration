@@ -32,7 +32,6 @@ public class EthericCastingTable extends BlockCasting{
         this.setRegistryName(Reference.MOD_ID, NAME);
         this.setUnlocalizedName(Reference.MOD_ID+":"+NAME);
         this.setCreativeTab(Reference.MOD_CREATIVE_TAB);
-        this.register();
     }
 
     @Override

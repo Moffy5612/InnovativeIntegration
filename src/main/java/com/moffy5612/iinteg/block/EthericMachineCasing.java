@@ -9,7 +9,6 @@ public class EthericMachineCasing extends ModBlockBase{
 
     public EthericMachineCasing(){
         super(Material.IRON, NAME, null);
-        this.register();
     }
 
     @Override

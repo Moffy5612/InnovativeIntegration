@@ -10,7 +10,7 @@ import slimeknights.tconstruct.smeltery.tileentity.TileCastingTable;
 
 public class TileEthericCastingTable extends TileCastingTable{
 
-    public static final String NAME = "advanced_casting_table";
+    public static final String NAME = "ehteric_casting_table";
 
     public TileEthericCastingTable(){
         super();

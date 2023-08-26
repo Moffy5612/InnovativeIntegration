@@ -23,14 +23,6 @@ public class AdvancedForge extends ModBlockBase{
 
     public AdvancedForge(){
         super(Material.IRON, NAME, new TileAdvancedForge());
-
-        this.setSoundType(SoundType.METAL);
-        this.setResistance(10f);
-        this.setHardness(2f);
-
-        this.setHarvestLevel("pickaxe", 0);
-
-        this.register();
     }
 
     @Override

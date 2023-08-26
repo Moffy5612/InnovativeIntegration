@@ -37,8 +37,6 @@ public class SpiritualProjector extends ModBlockBase{
         this.setHardness(1f);
 
         this.renderer =  new SpiritualProjectorRenderer();
-
-        this.register();
     }
 
     @Override

@@ -5,9 +5,8 @@ import javax.annotation.Nullable;
 import com.moffy5612.iinteg.IInteg;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedPartBuilder;
 import com.moffy5612.iinteg.client.gui.IIntegGuiList;
+import com.moffy5612.iinteg.misc.ModTier;
 
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,17 +17,12 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class AdvancedPartBuilder extends ModBlockBase{
+public class AdvancedPartBuilder extends ModMachineBlockBase{
 
     public static final String NAME = "advanced_part_builder";
 
     public AdvancedPartBuilder(){
-        super(Material.WOOD, NAME, new TileAdvancedPartBuilder());
-        this.setSoundType(SoundType.WOOD);
-        this.setResistance(5f);
-        this.setHardness(1f);
-
-        this.register();
+        super(NAME, new TileAdvancedPartBuilder());
     }
 
     @Override
@@ -54,11 +48,12 @@ public class AdvancedPartBuilder extends ModBlockBase{
                 worldIn.spawnEntity(entityItem);
             }
         }
+        super.breakBlock(worldIn, pos, state);
     }
 
     @Override
     @Nullable
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileAdvancedPartBuilder();
+        return new TileAdvancedPartBuilder(ModTier.getTierFromIndex(meta));
     }
 }

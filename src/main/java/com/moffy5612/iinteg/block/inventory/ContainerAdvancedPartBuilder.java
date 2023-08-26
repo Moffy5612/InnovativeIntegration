@@ -18,6 +18,8 @@ public class ContainerAdvancedPartBuilder extends ModContainerBase{
 
         this.addSlotToContainer(new SlotAdvancedPartBuilder(trpb, 2, 119, 38));
 		
+		this.addSlotToContainer(new SlotAdvancedPartBuilder(trpb, 3, 177, 6));
+
         for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
 				this.addSlotToContainer(new Slot(inventory, i * 9 + j + 9, 8 + j * 18, 84 + i * 18));

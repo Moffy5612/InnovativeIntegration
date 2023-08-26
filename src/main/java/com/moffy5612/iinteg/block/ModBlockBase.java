@@ -29,6 +29,8 @@ public abstract class ModBlockBase extends BlockContainer{
         this.setCreativeTab(Reference.MOD_CREATIVE_TAB);
         this.name = name;
         this.te = te;
+
+        this.register();
     }
 
     public void register(){
