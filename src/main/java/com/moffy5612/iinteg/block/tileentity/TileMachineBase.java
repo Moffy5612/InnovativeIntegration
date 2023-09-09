@@ -192,7 +192,7 @@ public abstract class TileMachineBase extends ModTileEntityBase implements ITick
             int energyReceived = Math.min(capacity - energy, Math.min(this.transferRate, maxReceive));
             if (!simulate)
                 energy += energyReceived;
-            markDirty();
+            world.markAndNotifyBlock(pos,null, world.getBlockState(pos),world.getBlockState(pos),2);
             return energyReceived;
         }
 
@@ -204,7 +204,7 @@ public abstract class TileMachineBase extends ModTileEntityBase implements ITick
         int energyExtracted = Math.min(energy, Math.min(transferRate, maxExtract));
         if (!simulate)
             energy -= energyExtracted;
-        markDirty();
+        world.markAndNotifyBlock(pos,null, world.getBlockState(pos),world.getBlockState(pos),2);
         return energyExtracted;
         }
 

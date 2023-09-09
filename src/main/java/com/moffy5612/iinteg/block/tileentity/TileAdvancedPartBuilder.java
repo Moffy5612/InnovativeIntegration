@@ -88,7 +88,6 @@ public class TileAdvancedPartBuilder extends TileMachineBase{
 
     @Override
     public void update() {
-        receiveEnergy();
         if(!this.inventory.getStackInSlot(0).isEmpty() && !this.inventory.getStackInSlot(1).isEmpty() && this.energyStorage.getEnergyStored() > 0){
             if(this.energyStorage.canExtract()){
                 int extracted = this.energyStorage.extractEnergy(transferredEnergy, false);
