@@ -4,7 +4,6 @@ package com.moffy5612.iinteg.client.gui;
 import com.moffy5612.iinteg.Reference;
 import com.moffy5612.iinteg.block.inventory.ContainerAdvancedPartBuilder;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedPartBuilder;
-import com.moffy5612.iinteg.block.tileentity.TileSpiritualProjector;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;

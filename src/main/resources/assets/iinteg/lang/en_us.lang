@@ -3,7 +3,7 @@ itemGroup.iinteg=Innovative Integration
 
 #TileEntity Name
 tile.iinteg:spiritual_projector.name=Spiritual Projector
-tile.iinteg:etheric_machine_casing.name=Etheric Machine Casing
+tile.iinteg:machine_casing.etheric.name=Etheric Machine Casing
 tile.iinteg:etheric_casting_table.name=Etheric Casing Table
 
 #Item Name

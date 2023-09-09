@@ -6,11 +6,11 @@ import com.moffy5612.iinteg.Reference;
 import com.moffy5612.iinteg.block.tileentity.ModTileEntityBase;
 import com.moffy5612.iinteg.handler.ModBlockHandler;
 import com.moffy5612.iinteg.handler.ModItemHandler;
+import com.moffy5612.iinteg.item.ModItemBlock;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.world.World;
@@ -35,7 +35,7 @@ public abstract class ModBlockBase extends BlockContainer{
 
     public void register(){
         ModBlockHandler.REG_BLOCKS.add(this);
-        ItemBlock itemBlock = new ItemBlock(this);
+        ModItemBlock itemBlock = new ModItemBlock(this);
         itemBlock.setRegistryName(Reference.MOD_ID, name);
         ModItemHandler.REG_BLOCK_ITEMS.add(itemBlock);
         ModTileEntityBase te = this.te;
@@ -55,5 +55,9 @@ public abstract class ModBlockBase extends BlockContainer{
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
+    }
+
+    public boolean hasSubBlocks(){
+        return false;
     }
 }

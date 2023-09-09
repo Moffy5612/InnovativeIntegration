@@ -11,7 +11,8 @@
             "data" : 0
         },
         "m" : {
-            "item" : "iinteg:etheric_machine_casing"
+            "item" : "iinteg:machine_casing",
+            "data" : 0
         },
         "c" : {
             "item" : "iinteg:arcane_circuit",

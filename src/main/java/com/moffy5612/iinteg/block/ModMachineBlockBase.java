@@ -1,5 +1,8 @@
 package com.moffy5612.iinteg.block;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.moffy5612.iinteg.Reference;
 import com.moffy5612.iinteg.block.states.ModMachineBlockState;
 import com.moffy5612.iinteg.block.tileentity.ModTileEntityBase;
@@ -19,7 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 
-public abstract class ModMachineBlockBase extends ModBlockBase{
+public abstract class ModMachineBlockBase extends ModBlockBase implements IModMultiTexturedBlock{
 
     public ModMachineBlockBase(String name, ModTileEntityBase te) {
         super(Material.IRON, name, te);
@@ -72,5 +75,19 @@ public abstract class ModMachineBlockBase extends ModBlockBase{
     @Override
     public int getMetaFromState(IBlockState state) {
         return state.getValue(ModMachineBlockState.TIER_PROPERTY).getIndex();
+    }
+
+    @Override
+    public boolean hasSubBlocks() {
+        return true;
+    }
+
+    @Override
+    public String[] getSubBlockNames() {
+        List<String> names = new ArrayList<String>();
+        for(ModTier tier : ModTier.values()){
+            names.add(name + "_" + tier.getName());
+        }
+        return names.toArray(new String[names.size()]);
     }
 }

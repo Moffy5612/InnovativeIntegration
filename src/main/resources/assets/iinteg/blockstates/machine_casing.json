@@ -1,0 +1,19 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model":"iinteg:etheric_machine_casing",
+        "textures":{
+            "particle":"iinteg:block/machine/etheric_machine_casing_face"
+        }
+    },
+    "variants":{
+        "tier":{
+            "etheric":{
+                "model":"iinteg:etheric_machine_casing",
+                "textures":{
+                    "particle":"iinteg:block/machine/etheric_machine_casing_face"
+                }
+            }
+        }
+    }
+}

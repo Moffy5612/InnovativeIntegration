@@ -5,7 +5,7 @@ import java.util.Set;
 
 import com.moffy5612.iinteg.block.AdvancedPartBuilder;
 import com.moffy5612.iinteg.block.EthericCastingTable;
-import com.moffy5612.iinteg.block.EthericMachineCasing;
+import com.moffy5612.iinteg.block.MachineCasing;
 import com.moffy5612.iinteg.block.SpiritualGenerator;
 import com.moffy5612.iinteg.block.SpiritualProjector;
 import com.moffy5612.iinteg.misc.annotation.IIntegContentInstance;
@@ -15,7 +15,7 @@ import net.minecraft.block.BlockContainer;
 public class ModBlockHandler {
     public static final Set<BlockContainer> REG_BLOCKS = new HashSet<BlockContainer>();
 
-    @IIntegContentInstance(contentClass = EthericMachineCasing.class) public static BlockContainer ETHERIC_MACHINE_CASING;
+    @IIntegContentInstance(contentClass = MachineCasing.class) public static BlockContainer ETHERIC_MACHINE_CASING;
     @IIntegContentInstance(contentClass = SpiritualGenerator.class) public static BlockContainer SPIRITUAL_GENERATOR;
     @IIntegContentInstance(contentClass = SpiritualProjector.class) public static BlockContainer SPIRITUAL_PROJECTOR;
 

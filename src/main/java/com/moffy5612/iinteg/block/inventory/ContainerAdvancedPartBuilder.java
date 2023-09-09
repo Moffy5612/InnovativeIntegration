@@ -35,6 +35,4 @@ public class ContainerAdvancedPartBuilder extends ModContainerBase{
     public boolean canInteractWith(EntityPlayer playerIn) {
         return !playerIn.isSpectator();
     }
-
-    
 }

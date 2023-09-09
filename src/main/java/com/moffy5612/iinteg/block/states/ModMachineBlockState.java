@@ -21,5 +21,4 @@ public class ModMachineBlockState extends ExtendedBlockState{
             new IUnlistedProperty[]{}
         );
     }
-
 }
