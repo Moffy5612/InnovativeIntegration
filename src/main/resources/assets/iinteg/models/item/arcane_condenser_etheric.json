@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/handheld",
+    "textures": {
+      "layer0": "iinteg:item/etheric_arcane_condenser"
+    }
+  }

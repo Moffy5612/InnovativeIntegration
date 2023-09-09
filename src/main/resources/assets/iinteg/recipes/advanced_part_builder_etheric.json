@@ -1,0 +1,37 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "ibi",
+        "cmd",
+        "ipi"
+    ],
+    "key" : {
+        "i" : {
+            "item" : "iinteg:material",
+            "data" : 0
+        },
+        "b" : {
+            "item" : "tconstruct:tooltables",
+            "data" : 2
+        },
+        "c" : {
+            "item":"iinteg:arcane_circuit",
+            "data":0
+        },
+        "m" : {
+            "item":"iinteg:machine_casing",
+            "data":0
+        },
+        "d" : {
+            "item":"iinteg:arcane_condenser",
+            "data":0
+        },
+        "p" : {
+            "item":"minecraft:piston"
+        }
+    },
+    "result" : {
+        "item" : "iinteg:advanced_part_builder",
+        "data" : 0
+    }
+}

@@ -2,6 +2,8 @@
 itemGroup.iinteg=Innovative Integration
 
 #TileEntity Name
+tile.iinteg:advanced_part_builder.name=Advanced Part Builder
+tile.iinteg:advanced_part_builder.etheric.name=Etheric Part Builder
 tile.iinteg:spiritual_projector.name=Spiritual Projector
 tile.iinteg:machine_casing.etheric.name=Etheric Machine Casing
 tile.iinteg:etheric_casting_table.name=Etheric Casing Table
@@ -12,7 +14,7 @@ item.iinteg:etheric_ingot.name=Etheric Ingot
 item.iinteg:reim_converter_anode.name=Re-Im Converter(Anode)
 item.iinteg:reim_converter_cathode.name=Re-Im Converter(Cathode)
 item.iinteg:arcane_circuit_basic.name=Arcane Circuit
-item.iinteg:arcane_condenser_etheric.name=Etheric Arcane Condenser
+item.iinteg:arcane_condenser.etheric.name=Etheric Arcane Condenser
 
 #Item Description
 item.iinteg:crystal_ball.desc=It's so beautiful you can't even look at it...

@@ -46,16 +46,19 @@ public class ContainerAdvancedPartBuilder extends ModContainerBase{
     }
 
 	@Override
-	@SuppressWarnings("null")
 	public void detectAndSendChanges() {
 		super.detectAndSendChanges();
 
-		int newStoredEnergy = this.trpb.getCapability(CapabilityEnergy.ENERGY, null).getEnergyStored();
-		if(storedEnergy != newStoredEnergy){
-			for(IContainerListener listener : listeners){
-				listener.sendWindowProperty(this, 0, newStoredEnergy);
+		IEnergyStorage energyStorage = this.trpb.getCapability(CapabilityEnergy.ENERGY, null);
+
+		if(energyStorage!=null){
+			int newStoredEnergy = energyStorage.getEnergyStored();
+			if(storedEnergy != newStoredEnergy){
+				for(IContainerListener listener : listeners){
+					listener.sendWindowProperty(this, 0, newStoredEnergy);
+				}
+				storedEnergy = newStoredEnergy;
 			}
-			storedEnergy = newStoredEnergy;
 		}
 	}
 
