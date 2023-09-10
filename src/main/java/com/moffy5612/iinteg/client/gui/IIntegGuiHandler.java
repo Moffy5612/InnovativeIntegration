@@ -2,10 +2,10 @@ package com.moffy5612.iinteg.client.gui;
 
 import javax.annotation.Nullable;
 
-import com.moffy5612.iinteg.block.inventory.ContainerAdvancedForge;
+import com.moffy5612.iinteg.block.inventory.ContainerAdvancedToolForge;
 import com.moffy5612.iinteg.block.inventory.ContainerAdvancedPartBuilder;
 import com.moffy5612.iinteg.block.inventory.ContainerSpiritualProjector;
-import com.moffy5612.iinteg.block.tileentity.TileAdvancedForge;
+import com.moffy5612.iinteg.block.tileentity.TileAdvancedToolForge;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedPartBuilder;
 import com.moffy5612.iinteg.block.tileentity.TileSpiritualProjector;
 
@@ -22,9 +22,9 @@ public class IIntegGuiHandler implements IGuiHandler{
         if(ID == IIntegGuiList.GUI_ADVANCED_PART_BUILDER){
             TileAdvancedPartBuilder trpb = (TileAdvancedPartBuilder)world.getTileEntity(new BlockPos(x, y, z));
             return new ContainerAdvancedPartBuilder(player.inventory, trpb);
-        }else if(ID == IIntegGuiList.GUI_ADVANCED_FORGE){
-            TileAdvancedForge trf = (TileAdvancedForge)world.getTileEntity(new BlockPos(x, y, z));
-            return new ContainerAdvancedForge(player.inventory, trf);
+        }else if(ID == IIntegGuiList.GUI_ADVANCED_TOOL_FORGE){
+            TileAdvancedToolForge trf = (TileAdvancedToolForge)world.getTileEntity(new BlockPos(x, y, z));
+            return new ContainerAdvancedToolForge(player.inventory, trf);
         }else if(ID == IIntegGuiList.GUI_SPIRITUAL_PROJECTOR){
             TileSpiritualProjector tsp = (TileSpiritualProjector)world.getTileEntity(new BlockPos(x, y, z));
             return new ContainerSpiritualProjector(player.inventory, tsp);
@@ -38,9 +38,9 @@ public class IIntegGuiHandler implements IGuiHandler{
         if(ID == IIntegGuiList.GUI_ADVANCED_PART_BUILDER){
             TileAdvancedPartBuilder trpb = (TileAdvancedPartBuilder)world.getTileEntity(new BlockPos(x, y, z));
             return new GuiAdvancedPartBuilder(player.inventory, trpb);
-        }else if(ID == IIntegGuiList.GUI_ADVANCED_FORGE){
-            TileAdvancedForge trf = (TileAdvancedForge)world.getTileEntity(new BlockPos(x, y, z));
-            return new GuiAdvancedForge(player.inventory, trf);
+        }else if(ID == IIntegGuiList.GUI_ADVANCED_TOOL_FORGE){
+            TileAdvancedToolForge trf = (TileAdvancedToolForge)world.getTileEntity(new BlockPos(x, y, z));
+            return new GuiAdvancedToolForge(player.inventory, trf);
         }else if(ID == IIntegGuiList.GUI_SPIRITUAL_PROJECTOR){
             TileSpiritualProjector tsp = (TileSpiritualProjector)world.getTileEntity(new BlockPos(x, y, z));
             return new GuiSpiritualProjector(player.inventory, tsp);

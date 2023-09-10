@@ -3,7 +3,7 @@ package com.moffy5612.iinteg.handler;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.moffy5612.iinteg.block.AdvancedForge;
+import com.moffy5612.iinteg.block.AdvancedToolForge;
 import com.moffy5612.iinteg.block.AdvancedPartBuilder;
 import com.moffy5612.iinteg.block.EthericCastingTable;
 import com.moffy5612.iinteg.block.MachineCasing;
@@ -33,8 +33,8 @@ public class ModBlockHandler {
     public static BlockContainer ADVANCED_PART_BUILDER;
     
     @IIntegContentInstance(
-        contentClass = AdvancedForge.class,
+        contentClass = AdvancedToolForge.class,
         requiredModIds = {"tconstruct"}
     )
-    public static BlockContainer ADVANCED_FORGE;
+    public static BlockContainer ADVANCED_TOOL_FORGE;
 }

@@ -1,0 +1,9 @@
+{
+    "parent":"iinteg:block/machine",
+    "textures": {
+        "top": "iinteg:block/machine/advanced_tool_forge/tool_forge_top",
+        "side": "iinteg:block/machine/advanced_tool_forge/etheric_tool_forge_side",
+        "bottom": "iinteg:block/machine/advanced_tool_forge/etheric_tool_forge_side",
+        "core": "iinteg:block/machine/machine_core"
+    }
+}

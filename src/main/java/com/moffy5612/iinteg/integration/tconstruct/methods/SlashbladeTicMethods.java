@@ -1,6 +1,6 @@
 package com.moffy5612.iinteg.integration.tconstruct.methods;
 
-import com.moffy5612.iinteg.block.tileentity.TileAdvancedForge;
+import com.moffy5612.iinteg.block.tileentity.TileAdvancedToolForge;
 
 import cn.mmf.slashblade_tic.blade.TinkerSlashBladeRegistry;
 import cn.mmf.slashblade_tic.util.SlashBladeBuilder;
@@ -13,7 +13,7 @@ import slimeknights.tconstruct.library.events.TinkerCraftingEvent;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 
 public class SlashbladeTicMethods {
-    public static boolean tryRepairBlade(TileAdvancedForge trf){
+    public static boolean tryRepairBlade(TileAdvancedToolForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);
         NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
         for(int i = 1; i <= 5; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
@@ -37,7 +37,7 @@ public class SlashbladeTicMethods {
         return false;
     }
 
-    public static boolean tryModifyBlade(TileAdvancedForge trf){
+    public static boolean tryModifyBlade(TileAdvancedToolForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);
         NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
         for(int i = 1; i <= 5; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
@@ -64,7 +64,7 @@ public class SlashbladeTicMethods {
         return false;
     }
 
-    public static boolean tryBuildBlade(TileAdvancedForge trf){
+    public static boolean tryBuildBlade(TileAdvancedToolForge trf){
         NonNullList<ItemStack>materials = NonNullList.withSize(6, ItemStack.EMPTY);
         for(int i = 0; i <= 5; i++)materials.set(i, trf.inventory.getStackInSlot(i));
         if(!materials.isEmpty()){
@@ -87,7 +87,7 @@ public class SlashbladeTicMethods {
         return false;
     }
 
-    public static boolean hasRecipe(TileAdvancedForge trf){
+    public static boolean hasRecipe(TileAdvancedToolForge trf){
         try{
             ItemStack core = trf.inventory.getStackInSlot(0);
             NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);

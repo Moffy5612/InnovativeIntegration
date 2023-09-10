@@ -2,6 +2,8 @@
 itemGroup.iinteg=Innovative Integration
 
 #TileEntity Name
+tile.iinteg:advanced_tool_forge.name=Advanced Tool Forge
+tile.iinteg:advanced_tool_forge.etheric.name=Etheric Tool Forge
 tile.iinteg:advanced_part_builder.name=Advanced Part Builder
 tile.iinteg:advanced_part_builder.etheric.name=Etheric Part Builder
 tile.iinteg:spiritual_projector.name=Spiritual Projector

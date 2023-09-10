@@ -1,6 +1,6 @@
 package com.moffy5612.iinteg.integration.tconstruct.methods;
 
-import com.moffy5612.iinteg.block.tileentity.TileAdvancedForge;
+import com.moffy5612.iinteg.block.tileentity.TileAdvancedToolForge;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import slimeknights.tconstruct.library.utils.ToolBuilder;
 
 public class TConstructMethods {
-    public static boolean tryRepairTool(com.moffy5612.iinteg.block.tileentity.TileAdvancedForge trf){
+    public static boolean tryRepairTool(com.moffy5612.iinteg.block.tileentity.TileAdvancedToolForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);
         NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
         for(int i = 1; i <= 5; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
@@ -27,7 +27,7 @@ public class TConstructMethods {
         return false;
     }
 
-    public static boolean tryModifyTool(TileAdvancedForge trf){
+    public static boolean tryModifyTool(TileAdvancedToolForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);
         NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
         for(int i = 1; i <= 5; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
@@ -48,7 +48,7 @@ public class TConstructMethods {
         return false;
     }
 
-    public static boolean tryBuildTool(TileAdvancedForge trf){
+    public static boolean tryBuildTool(TileAdvancedToolForge trf){
         NonNullList<ItemStack>materials = NonNullList.withSize(6, ItemStack.EMPTY);
         for(int i = 0; i <= 5; i++)materials.set(i, trf.inventory.getStackInSlot(i));
         if(!materials.isEmpty()){
@@ -67,7 +67,7 @@ public class TConstructMethods {
         return false;
     }
 
-    public static boolean hasRecipe(TileAdvancedForge trf){
+    public static boolean hasRecipe(TileAdvancedToolForge trf){
         try{
             ItemStack core = trf.inventory.getStackInSlot(0);
             NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);

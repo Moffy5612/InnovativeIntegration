@@ -1,6 +1,6 @@
 package com.moffy5612.iinteg.integration.tconstruct.methods;
 
-import com.moffy5612.iinteg.block.tileentity.TileAdvancedForge;
+import com.moffy5612.iinteg.block.tileentity.TileAdvancedToolForge;
 
 import c4.conarm.lib.ArmoryRegistry;
 import c4.conarm.lib.tinkering.ArmorBuilder;
@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import slimeknights.tconstruct.library.utils.ToolBuilder;
 
 public class ConarmMethods {
-    public static boolean tryRepairArmor(TileAdvancedForge trf){
+    public static boolean tryRepairArmor(TileAdvancedToolForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);
         NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
         for(int i = 1; i <= 5; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
@@ -30,7 +30,7 @@ public class ConarmMethods {
         return false;
     }
 
-    public static boolean tryModifyArmor(TileAdvancedForge trf){
+    public static boolean tryModifyArmor(TileAdvancedToolForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);
         NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
         for(int i = 1; i <= 5; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
@@ -51,7 +51,7 @@ public class ConarmMethods {
         return false;
     }
 
-    public static boolean tryBuildArmor(TileAdvancedForge trf){
+    public static boolean tryBuildArmor(TileAdvancedToolForge trf){
         NonNullList<ItemStack>materials = NonNullList.withSize(6, ItemStack.EMPTY);
         for(int i = 0; i <= 5; i++)materials.set(i, trf.inventory.getStackInSlot(i));
         if(!materials.isEmpty()){
@@ -70,7 +70,7 @@ public class ConarmMethods {
         return false;
     }
 
-    public static boolean hasRecipe(TileAdvancedForge trf){
+    public static boolean hasRecipe(TileAdvancedToolForge trf){
         try{
             ItemStack core = trf.inventory.getStackInSlot(0);
             NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
