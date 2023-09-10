@@ -20,7 +20,7 @@ import net.minecraftforge.items.ItemStackHandler;
 public abstract class TileMachineBase extends ModTileEntityBase implements ITickable{
 
     public static final int BASE_AMOUNT_ENERGY_STORAGE = 20000;
-    public static final int BASE_AMOUNT_ENERGY_TRANSFER = 90;
+    public static final int BASE_AMOUNT_ENERGY_TRANSFER = 50;
     public static final int MAX_ENERGY_TRANSFER = 300000;
 
     public String name;
@@ -38,29 +38,19 @@ public abstract class TileMachineBase extends ModTileEntityBase implements ITick
         this.transferredEnergy = 0;
         this.inventory = new MachineInventory(inventorySize);
         this.transferredEnergy = getEnergyTransfer(0);
-
-        if(tier != null){
-            energyStorage = new MachineEnergyStorage(isGenerator);
-        }
+        this.energyStorage = new MachineEnergyStorage(isGenerator);
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
+        if(compound.hasKey("tier"))this.tier = ModTier.getTierFromIndex(compound.getInteger("tier"));
         super.readFromNBT(compound);
-        this.tier = ModTier.getTierFromIndex(compound.getInteger("tier"));
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-        NBTTagCompound nbt = super.writeToNBT(compound);
-        nbt.setInteger("tier", this.tier.getIndex());
-        return nbt;
-    }
-
-    @Override
-    public void deserializeNBT(NBTTagCompound nbt) {
-        super.deserializeNBT(nbt);
-        this.tier = ModTier.getTierFromIndex(nbt.getInteger("tier"));
+        compound.setInteger("tier", this.tier.getIndex());
+        return super.writeToNBT(compound);
     }
 
     @Override
@@ -169,7 +159,7 @@ public abstract class TileMachineBase extends ModTileEntityBase implements ITick
 
         public MachineEnergyStorage(boolean isGenerator){
             this.isGenerator = isGenerator;
-            this.capacity = (int)(BASE_AMOUNT_ENERGY_STORAGE * Math.pow(10d, (double)tier.getIndex()));
+            this.capacity = BASE_AMOUNT_ENERGY_STORAGE;
             this.energy = 0;
             this.transferRate = BASE_AMOUNT_ENERGY_TRANSFER;
         }

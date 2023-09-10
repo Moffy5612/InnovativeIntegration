@@ -54,8 +54,8 @@ public class TileSpiritualProjector extends ModTileEntityBase implements ITickab
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
-        this.inventory.deserializeNBT(compound.getCompoundTag("inventory"));
-        this.progress = compound.getInteger("progress");
+        if(compound.hasKey("inventory"))this.inventory.deserializeNBT(compound.getCompoundTag("inventory"));
+        if(compound.hasKey("progress"))this.progress = compound.getInteger("progress");
         super.readFromNBT(compound);
     }
 

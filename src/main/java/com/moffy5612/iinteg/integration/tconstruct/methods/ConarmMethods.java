@@ -14,7 +14,7 @@ public class ConarmMethods {
     public static boolean tryRepairArmor(TileAdvancedForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);
         NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
-        for(int i = 1; i < trf.inventory.getSlots() - 1; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
+        for(int i = 1; i <= 5; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
         if(!materials.isEmpty()){
             if(trf.inventory.getStackInSlot(6).isEmpty()){
                 ItemStack result = ToolBuilder.tryRepairTool(materials, toolStack, false);
@@ -33,7 +33,7 @@ public class ConarmMethods {
     public static boolean tryModifyArmor(TileAdvancedForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);
         NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
-        for(int i = 1; i < trf.inventory.getSlots() - 1; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
+        for(int i = 1; i <= 5; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
         if(!materials.isEmpty()){
             try{
                 if(trf.inventory.getStackInSlot(6).isEmpty()){
@@ -53,7 +53,7 @@ public class ConarmMethods {
 
     public static boolean tryBuildArmor(TileAdvancedForge trf){
         NonNullList<ItemStack>materials = NonNullList.withSize(6, ItemStack.EMPTY);
-        for(int i = 0; i < trf.inventory.getSlots() - 1; i++)materials.set(i, trf.inventory.getStackInSlot(i));
+        for(int i = 0; i <= 5; i++)materials.set(i, trf.inventory.getStackInSlot(i));
         if(!materials.isEmpty()){
             try{
                 if(trf.inventory.getStackInSlot(6).isEmpty()){
@@ -61,12 +61,34 @@ public class ConarmMethods {
                     if(result != null && !result.isEmpty()){
                         TinkerCraftingEvent.ToolCraftingEvent.fireEvent(result, null, materials);
                         trf.inventory.setStackInSlot(6, result);
-                        for(int i = 0; i < trf.inventory.getSlots() - 1; i++)trf.inventory.extractItem(i, 1, false);
+                        for(int i = 0; i <= 5; i++)trf.inventory.extractItem(i, 1, false);
                         return true;
                     }
                 }
             }catch(TinkerGuiException e){}
         }
         return false;
+    }
+
+    public static boolean hasRecipe(TileAdvancedForge trf){
+        try{
+            ItemStack core = trf.inventory.getStackInSlot(0);
+            NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
+            NonNullList<ItemStack>all = NonNullList.withSize(6, ItemStack.EMPTY);
+            
+            all.set(0, core);
+            for(int i = 1; i <= 5; i++){
+                all.set(i, trf.inventory.getStackInSlot(i));
+                materials.set(i - 1, trf.inventory.getStackInSlot(i));
+            }
+
+            ItemStack repair = ToolBuilder.tryRepairTool(materials, core, false);
+            ItemStack modify = ArmorBuilder.tryModifyArmor(materials, core, false);
+            ItemStack build = ArmorBuilder.tryBuildArmor(all, null, ArmoryRegistry.getArmorCrafting());
+
+            return(!repair.isEmpty() || !modify.isEmpty() || !build.isEmpty());
+        }catch(TinkerGuiException e){
+            return false;
+        }
     }
 }

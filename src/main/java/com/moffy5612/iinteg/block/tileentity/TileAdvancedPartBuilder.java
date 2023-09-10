@@ -18,6 +18,7 @@ import slimeknights.tconstruct.library.utils.ToolBuilder;
 public class TileAdvancedPartBuilder extends TileMachineBase{
     public boolean canExtractMaterials;
     public int progress;
+    public boolean isRecipeValid;
 
     public static final int PROGRESS_MAX = 200;
 
@@ -32,25 +33,25 @@ public class TileAdvancedPartBuilder extends TileMachineBase{
         super(NAME, tier, false, 4);
         this.canExtractMaterials = true;
         this.progress = 0;
+        this.isRecipeValid = false;
     }
 
     @Override
-    public NBTTagCompound serializeNBT() {
-        NBTTagCompound nbt = super.serializeNBT();
-        nbt.setTag("inventory",this.inventory.serializeNBT());
-        nbt.setInteger("progress", this.progress);
-        nbt.setBoolean("canExtractMaterials", this.canExtractMaterials);
-        nbt.setTag("energy", energyStorage.serializeNBT());
-        return nbt;
+    public void readFromNBT(NBTTagCompound compound) {
+        if(compound.hasKey("inventory"))this.inventory.deserializeNBT(compound.getCompoundTag("inventory"));
+        if(compound.hasKey("progress"))this.progress = compound.getInteger("progress");
+        if(compound.hasKey("canExtractMaterials"))this.canExtractMaterials = compound.getBoolean("canExtractMaterials");
+        if(compound.hasKey("energy"))this.energyStorage.deserializeNBT(compound.getCompoundTag("energy"));
+        super.readFromNBT(compound);
     }
 
     @Override
-    public void deserializeNBT(NBTTagCompound nbt) {
-        super.deserializeNBT(nbt);
-        this.inventory.deserializeNBT(nbt.getCompoundTag("inventory"));
-        this.progress = nbt.getInteger("progress");
-        this.canExtractMaterials = nbt.getBoolean("canExtractMaterials");
-        energyStorage.deserializeNBT(nbt.getCompoundTag("energy"));
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+        compound.setTag("inventory",this.inventory.serializeNBT());
+        compound.setInteger("progress", this.progress);
+        compound.setBoolean("canExtractMaterials", this.canExtractMaterials);
+        compound.setTag("energy", energyStorage.serializeNBT());
+        return super.writeToNBT(compound);
     }
 
     @Override
@@ -89,7 +90,7 @@ public class TileAdvancedPartBuilder extends TileMachineBase{
     @Override
     public void update() {
         if(!this.inventory.getStackInSlot(0).isEmpty() && !this.inventory.getStackInSlot(1).isEmpty() && this.energyStorage.getEnergyStored() > 0){
-            if(this.energyStorage.canExtract()){
+            if(this.energyStorage.canExtract() && this.isRecipeValid){
                 int extracted = this.energyStorage.extractEnergy(transferredEnergy, false);
                 int increasedProgress = extracted / BASE_AMOUNT_ENERGY_TRANSFER;
                 if(extracted > 0){
@@ -102,6 +103,13 @@ public class TileAdvancedPartBuilder extends TileMachineBase{
             }
             
         }
+    }
+
+    @Override
+    public void onSlotChanged() {
+        super.onSlotChanged();
+        this.isRecipeValid = searchRecipe();
+        if(!this.isRecipeValid)this.progress=0;
     }
 
     public void makePart(){
@@ -146,5 +154,25 @@ public class TileAdvancedPartBuilder extends TileMachineBase{
                 }
             }
         }
+    }
+
+    public boolean searchRecipe(){
+        ItemStack patternStack = this.inventory.getStackInSlot(0);
+        ItemStack materialStack = this.inventory.getStackInSlot(1);
+        ItemStack resultStack = null;
+        if(!patternStack.isEmpty() && !materialStack.isEmpty()){
+            try{
+                NonNullList<ItemStack>materials = NonNullList.withSize(1, ItemStack.EMPTY);
+                materials.set(0, materialStack);
+                NonNullList<ItemStack> result = ToolBuilder.tryBuildToolPart(patternStack, materials, false);
+                if(result != null){
+                    resultStack = result.get(0);
+                    if(!resultStack.isEmpty())return true;
+                }
+            }catch(TinkerGuiException e){
+                return false;
+            }
+        }
+        return false;
     }
 }

@@ -6,87 +6,88 @@ import javax.annotation.Nullable;
 import com.moffy5612.iinteg.integration.tconstruct.methods.ConarmMethods;
 import com.moffy5612.iinteg.integration.tconstruct.methods.SlashbladeTicMethods;
 import com.moffy5612.iinteg.integration.tconstruct.methods.TConstructMethods;
+import com.moffy5612.iinteg.misc.ModTier;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileAdvancedForge extends ModTileEntityBase implements ITickable{
-    public TRFItemStackHandler inventory;
+public class TileAdvancedForge extends TileMachineBase{
     public boolean canExtractMaterials;
+    public int progress;
+    public boolean isRecipeValid;
+
+    public static final int PROGRESS_MAX = 200;
 
     public static final String NAME = "advanced_Forge";
 
     public TileAdvancedForge(){
-        super(NAME);
-        this.inventory = new TRFItemStackHandler(this, 7);
+        this(null);
+    }
+
+    public TileAdvancedForge(ModTier tier){
+        super(NAME, tier, false, 8);
         this.canExtractMaterials = true;
+        this.progress = 0;
+        this.isRecipeValid = false;
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
-        
+        if(compound.hasKey("inventory"))this.inventory.deserializeNBT(compound.getCompoundTag("inventory"));
+        if(compound.hasKey("progress"))this.progress = compound.getInteger("progress");
+        if(compound.hasKey("canExtractMaterials"))this.canExtractMaterials = compound.getBoolean("canExtractMaterials");
+        if(compound.hasKey("energy"))this.energyStorage.deserializeNBT(compound.getCompoundTag("energy"));
         super.readFromNBT(compound);
-
-        NBTTagList items = compound.getTagList("items", NBT.TAG_COMPOUND);
-        for(int i = 0; i < items.tagCount(); i++){
-            this.inventory.setStackInSlot(i, new ItemStack(items.getCompoundTagAt(i)));
-        }
-
-        this.canExtractMaterials = compound.getBoolean("canExtractMaterials");
-
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-        
-
-        NBTTagList items = new NBTTagList();
-        for(int i = 0; i < this.inventory.getSlots(); i++){
-            NBTTagCompound item = new NBTTagCompound();
-            ItemStack stack = this.inventory.getStackInSlot(i);
-            stack.writeToNBT(item);
-            items.appendTag(item);
-        }
-
-        compound.setTag("items", items);
+        compound.setTag("inventory",this.inventory.serializeNBT());
+        compound.setInteger("progress", this.progress);
         compound.setBoolean("canExtractMaterials", this.canExtractMaterials);
-
-        return super.writeToNBT(compound);
+        compound.setTag("energy", this.energyStorage.serializeNBT());
+        NBTTagCompound nbt = super.writeToNBT(compound);
+        return nbt;
     }
 
     @Override
-    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
-        
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
-    }
-
-    @Override
-    @Nullable
-    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        
-        if(hasCapability(capability, facing))return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(this.inventory);
-        return super.getCapability(capability, facing);
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+        NBTTagCompound compound = pkt.getNbtCompound();
+        this.inventory.deserializeNBT(compound);
     }
 
     @Override
     @Nullable
-    public ITextComponent getDisplayName() {
-        
-        return this.getDisplayName();
+    public SPacketUpdateTileEntity getUpdatePacket() {
+        return new SPacketUpdateTileEntity(pos, this.getBlockMetadata(), this.inventory.serializeNBT());
     }
 
     @Override
     public void update() {
-        
+        if(this.inventory.getStackInSlot(6).isEmpty() && this.energyStorage.getEnergyStored() > 0){
+            if(this.energyStorage.canExtract() && this.isRecipeValid){
+                int extracted = this.energyStorage.extractEnergy(transferredEnergy, false);
+                int increasedProgress = extracted / BASE_AMOUNT_ENERGY_TRANSFER;
+                if(extracted > 0){
+                    progress += increasedProgress;
+                    if(progress > PROGRESS_MAX){
+                        for(int i = 0; i < (int)(progress / PROGRESS_MAX); i++)updateSlot();
+                        progress = progress % PROGRESS_MAX;
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onSlotChanged() {
+        super.onSlotChanged();
+        this.isRecipeValid = searchRecipe();
+        if(!this.isRecipeValid)this.progress=0;
     }
 
     public void updateSlot(){
@@ -124,5 +125,12 @@ public class TileAdvancedForge extends ModTileEntityBase implements ITickable{
             }
             return super.extractItem(slot, amount, simulate);
         }
+    }
+
+    public boolean searchRecipe(){
+        boolean b = TConstructMethods.hasRecipe(this);
+        if(Loader.isModLoaded("conarm")) b = b || ConarmMethods.hasRecipe(this);
+        if(Loader.isModLoaded("slashbladetic")) b = b || SlashbladeTicMethods.hasRecipe(this);
+        return b;
     }
 }

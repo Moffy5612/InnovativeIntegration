@@ -5,8 +5,8 @@ import javax.annotation.Nullable;
 import com.moffy5612.iinteg.IInteg;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedForge;
 import com.moffy5612.iinteg.client.gui.IIntegGuiList;
+import com.moffy5612.iinteg.misc.ModTier;
 
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,11 +17,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class AdvancedForge extends ModBlockBase{
+public class AdvancedForge extends ModMachineBlockBase{
     public static final String NAME = "advanced_forge";
 
     public AdvancedForge(){
-        super(Material.IRON, NAME, new TileAdvancedForge());
+        super(NAME, new TileAdvancedForge());
     }
 
     @Override
@@ -52,6 +52,6 @@ public class AdvancedForge extends ModBlockBase{
     @Override
     @Nullable
     public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileAdvancedForge();
+        return new TileAdvancedForge(ModTier.getTierFromIndex(meta));
     }
 }

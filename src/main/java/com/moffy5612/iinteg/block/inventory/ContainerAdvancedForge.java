@@ -2,25 +2,33 @@ package com.moffy5612.iinteg.block.inventory;
 
 import com.moffy5612.iinteg.block.inventory.slot.SlotAdvancedForge;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedForge;
+import com.moffy5612.iinteg.block.tileentity.TileMachineBase;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
 
 public class ContainerAdvancedForge extends ModContainerBase{
 
     public TileAdvancedForge taf;
+    public int storedEnergy;
 
     public ContainerAdvancedForge(InventoryPlayer playerInventory, TileAdvancedForge taf){
         this.taf = taf;
+        this.storedEnergy = 0;
 
-        this.addSlotToContainer(new SlotAdvancedForge(taf, 0, 33, 42));
-        this.addSlotToContainer(new SlotAdvancedForge(taf, 1, 15, 63));
-        this.addSlotToContainer(new SlotAdvancedForge(taf, 2, 11, 38));
-        this.addSlotToContainer(new SlotAdvancedForge(taf, 3, 33, 20));
-        this.addSlotToContainer(new SlotAdvancedForge(taf, 4, 55, 38));
-        this.addSlotToContainer(new SlotAdvancedForge(taf, 5, 51, 63));
+        this.addSlotToContainer(new SlotAdvancedForge(taf, 0, 44, 42));
+        this.addSlotToContainer(new SlotAdvancedForge(taf, 1, 26, 63));
+        this.addSlotToContainer(new SlotAdvancedForge(taf, 2, 22, 38));
+        this.addSlotToContainer(new SlotAdvancedForge(taf, 3, 44, 20));
+        this.addSlotToContainer(new SlotAdvancedForge(taf, 4, 66, 38));
+        this.addSlotToContainer(new SlotAdvancedForge(taf, 5, 62, 63));
 		this.addSlotToContainer(new SlotAdvancedForge(taf, 6, 124, 38));
+
+        this.addSlotToContainer(new SlotAdvancedForge(taf, 7, 177, 6));
 
         for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
@@ -37,4 +45,35 @@ public class ContainerAdvancedForge extends ModContainerBase{
     public boolean canInteractWith(EntityPlayer playerIn) {
         return true;
     }
+
+    @Override
+	public void detectAndSendChanges() {
+		super.detectAndSendChanges();
+
+		IEnergyStorage energyStorage = this.taf.getCapability(CapabilityEnergy.ENERGY, null);
+
+		if(energyStorage!=null){
+			int newStoredEnergy = energyStorage.getEnergyStored();
+			if(storedEnergy != newStoredEnergy){
+				for(IContainerListener listener : listeners){
+					listener.sendWindowProperty(this, 0, newStoredEnergy);
+				}
+				storedEnergy = newStoredEnergy;
+			}
+		}
+	}
+
+	@Override
+	@SuppressWarnings("null")
+	public void updateProgressBar(int id, int data) {
+		super.updateProgressBar(id, data);
+
+		if(id == 0){
+			IEnergyStorage energy = this.taf.getCapability(CapabilityEnergy.ENERGY, null);
+			if(energy instanceof TileMachineBase.MachineEnergyStorage){
+				TileMachineBase.MachineEnergyStorage machineEnergyStorage = (TileMachineBase.MachineEnergyStorage)energy;
+				machineEnergyStorage.setEnegyStored(data);
+			}
+		}
+	}
 }

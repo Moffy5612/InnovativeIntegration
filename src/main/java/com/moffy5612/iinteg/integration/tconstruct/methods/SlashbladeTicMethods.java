@@ -16,7 +16,7 @@ public class SlashbladeTicMethods {
     public static boolean tryRepairBlade(TileAdvancedForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);
         NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
-        for(int i = 1; i < trf.inventory.getSlots() - 1; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
+        for(int i = 1; i <= 5; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
         if(!materials.isEmpty()){
             if(trf.inventory.getStackInSlot(6).isEmpty()){
                 ItemStack result = SlashBladeBuilder.tryRepairTool(materials, toolStack, false);
@@ -40,7 +40,7 @@ public class SlashbladeTicMethods {
     public static boolean tryModifyBlade(TileAdvancedForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);
         NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
-        for(int i = 1; i < trf.inventory.getSlots() - 1; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
+        for(int i = 1; i <= 5; i++)materials.set(i - 1, trf.inventory.getStackInSlot(i));
         if(!materials.isEmpty()){
             try{
                 if(trf.inventory.getStackInSlot(6).isEmpty()){
@@ -66,7 +66,7 @@ public class SlashbladeTicMethods {
 
     public static boolean tryBuildBlade(TileAdvancedForge trf){
         NonNullList<ItemStack>materials = NonNullList.withSize(6, ItemStack.EMPTY);
-        for(int i = 0; i < trf.inventory.getSlots() - 1; i++)materials.set(i, trf.inventory.getStackInSlot(i));
+        for(int i = 0; i <= 5; i++)materials.set(i, trf.inventory.getStackInSlot(i));
         if(!materials.isEmpty()){
             try{
                 if(trf.inventory.getStackInSlot(6).isEmpty()){
@@ -78,12 +78,34 @@ public class SlashbladeTicMethods {
                         float attack = SlashBladeHelper.getActualAttack(result);
                         ItemSlashBlade.setBaseAttackModifier(tag, attack);
                         trf.inventory.setStackInSlot(6, result);
-                        for(int i = 0; i < trf.inventory.getSlots() - 1; i++)trf.inventory.extractItem(i, 1, false);
+                        for(int i = 0; i < 5; i++)trf.inventory.extractItem(i, 1, false);
                         return true;
                     }
                 }
             }catch(TinkerGuiException e){}
         }
         return false;
+    }
+
+    public static boolean hasRecipe(TileAdvancedForge trf){
+        try{
+            ItemStack core = trf.inventory.getStackInSlot(0);
+            NonNullList<ItemStack>materials = NonNullList.withSize(5, ItemStack.EMPTY);
+            NonNullList<ItemStack>all = NonNullList.withSize(6, ItemStack.EMPTY);
+            
+            all.set(0, core);
+            for(int i = 1; i <= 5; i++){
+                all.set(i, trf.inventory.getStackInSlot(i));
+                materials.set(i - 1, trf.inventory.getStackInSlot(i));
+            }
+
+            ItemStack repair = SlashBladeBuilder.tryRepairTool(materials, core, false);
+            ItemStack modify = SlashBladeBuilder.tryModifyTool(materials, core, false);
+            ItemStack build = SlashBladeBuilder.tryBuildTool(all, null, TinkerSlashBladeRegistry.getToolForgeCrafting());
+
+            return(!repair.isEmpty() || !modify.isEmpty() || !build.isEmpty());
+        }catch(TinkerGuiException e){
+            return false;
+        }
     }
 }
