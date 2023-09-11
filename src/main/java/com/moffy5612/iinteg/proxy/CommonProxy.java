@@ -8,9 +8,9 @@ import com.moffy5612.iinteg.client.gui.IIntegGuiHandler;
 import com.moffy5612.iinteg.handler.ModBlockHandler;
 import com.moffy5612.iinteg.handler.ModCapabilityHandler;
 import com.moffy5612.iinteg.handler.ModItemHandler;
+import com.moffy5612.iinteg.handler.ModRecipeHandler;
 import com.moffy5612.iinteg.integration.tconstruct.TConstructIntegration;
 import com.moffy5612.iinteg.misc.util.AnnotationUtil;
-import com.moffy5612.iinteg.recipe.ModRecipeHandler;
 import com.moffy5612.iinteg.registry.Register;
 
 import net.minecraft.util.text.Style;

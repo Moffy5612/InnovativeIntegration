@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.moffy5612.iinteg.client.gui.GuiSpiritualProjector;
 import com.moffy5612.iinteg.handler.ModBlockHandler;
+import com.moffy5612.iinteg.handler.ModRecipeHandler;
 import com.moffy5612.iinteg.integration.jei.category.SpiritualProjectorCategory;
-import com.moffy5612.iinteg.recipe.ModRecipeHandler;
 import com.moffy5612.iinteg.recipe.ModRecipeListBase.ModRecipe;
 
 import mezz.jei.Internal;

@@ -1,0 +1,36 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "ifi",
+        "cmd",
+        "iri"
+    ],
+    "key" : {
+        "i" : {
+            "item" : "iinteg:material",
+            "data" : 0
+        },
+        "f" : {
+            "item" : "minecraft:furnace"
+        },
+        "c" : {
+            "item":"iinteg:arcane_circuit",
+            "data":0
+        },
+        "m" : {
+            "item":"iinteg:machine_casing",
+            "data":0
+        },
+        "d" : {
+            "item":"iinteg:arcane_condenser",
+            "data":0
+        },
+        "r" : {
+            "item":"minecraft:redstone"
+        }
+    },
+    "result" : {
+        "item" : "iinteg:spiritual_generator",
+        "data" : 0
+    }
+}

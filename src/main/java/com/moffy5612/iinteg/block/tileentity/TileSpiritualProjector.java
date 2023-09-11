@@ -7,7 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.moffy5612.iinteg.capability.item.CapabilityCrystalBall;
-import com.moffy5612.iinteg.recipe.ModRecipeHandler;
+import com.moffy5612.iinteg.handler.ModRecipeHandler;
 import com.moffy5612.iinteg.recipe.ModRecipeListBase.ModRecipe;
 
 import net.minecraft.item.ItemStack;

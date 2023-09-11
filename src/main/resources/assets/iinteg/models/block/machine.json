@@ -3,44 +3,14 @@
     "ambientocclusion": false,
     "elements":[
         {
-            "from":[0,15,0],
-            "to":[16,16,16],
-            "faces":{
-                "up":{"texture":"#top"}
-            }
-        },
-        {
             "from":[0,0,0],
-            "to":[1,16,16],
-            "faces":{
-                "west":{"texture":"#side"}
-            }
-        },
-        {
-            "from":[0,0,0],
-            "to":[16,16,1],
-            "faces":{
-                "north":{"texture":"#side"}
-            }
-        },
-        {
-            "from":[15,0,0],
             "to":[16,16,16],
             "faces":{
-                "east":{"texture":"#side"}
-            }
-        },
-        {
-            "from":[0,0,15],
-            "to":[16,16,16],
-            "faces":{
-                "south":{"texture":"#side"}
-            }
-        },
-        {
-            "from":[0, 0, 0],
-            "to":[16, 1, 16],
-            "faces":{
+                "up":{"texture":"#top"},
+                "north":{"texture":"#side"},
+                "south":{"texture":"#side"},
+                "east":{"texture":"#side"},
+                "west":{"texture":"#side"},
                 "down":{"texture":"#bottom"}
             }
         },
