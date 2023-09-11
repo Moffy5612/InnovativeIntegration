@@ -22,8 +22,6 @@ public class SlotSpiritualProjector extends SlotItemHandler{
             CapabilityCrystalBall capabilityCrystalBall = stack.getCapability(CapabilityCrystalBall.CAPABILITY_CRYSTAL_BALL, null);
             if(capabilityCrystalBall != null)return capabilityCrystalBall.hasOwner ? super.isItemValid(stack) : false;
             return false;
-        }else if(this.slotNumber == 1){
-            return super.isItemValid(stack);
         }else if(this.slotNumber == 2)return false;
         return super.isItemValid(stack);
     }

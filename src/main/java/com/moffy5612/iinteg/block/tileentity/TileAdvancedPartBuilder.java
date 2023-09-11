@@ -20,7 +20,7 @@ public class TileAdvancedPartBuilder extends TileMachineBase{
     public int progress;
     public boolean isRecipeValid;
 
-    public static final int PROGRESS_MAX = 200;
+    public static final int PROGRESS_MAX = 350;
 
     public static final String NAME = "advanced_part_builder";
 
@@ -91,7 +91,7 @@ public class TileAdvancedPartBuilder extends TileMachineBase{
     public void update() {
         if(!this.inventory.getStackInSlot(0).isEmpty() && !this.inventory.getStackInSlot(1).isEmpty() && this.energyStorage.getEnergyStored() > 0){
             if(this.energyStorage.canExtract() && this.isRecipeValid){
-                int extracted = this.energyStorage.extractEnergy(transferredEnergy, false);
+                int extracted = this.energyStorage.extractEnergy(this.energyStorage.transferRate, false);
                 int increasedProgress = extracted / BASE_AMOUNT_ENERGY_TRANSFER;
                 if(extracted > 0){
                     progress += increasedProgress;

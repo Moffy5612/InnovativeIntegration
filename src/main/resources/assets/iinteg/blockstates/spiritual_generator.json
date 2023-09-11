@@ -1,0 +1,13 @@
+{
+    "forge_marker": 1,
+    "variants":{
+        "tier":{
+            "etheric":{
+                "model":"iinteg:spiritual_generator_etheric",
+                "textures":{
+                    "particle":"iinteg:block/machine/etheric_machine_casing_face"
+                }
+            }
+        }
+    }
+}

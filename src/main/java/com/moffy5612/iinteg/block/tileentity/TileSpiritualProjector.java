@@ -122,6 +122,8 @@ public class TileSpiritualProjector extends ModTileEntityBase implements ITickab
         if(this.getWorld().provider.hasSkyLight()){
             int light = this.world.getLightFor(EnumSkyBlock.SKY, this.pos.up()) - this.world.getSkylightSubtracted();
             this.hasSkyLight = light > 0;
+        }else{
+            this.hasSkyLight = false;
         }
     }
 

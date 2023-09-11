@@ -6,6 +6,7 @@ tile.iinteg:advanced_tool_forge.name=Advanced Tool Forge
 tile.iinteg:advanced_tool_forge.etheric.name=Etheric Tool Forge
 tile.iinteg:advanced_part_builder.name=Advanced Part Builder
 tile.iinteg:advanced_part_builder.etheric.name=Etheric Part Builder
+tile.iinteg:spiritual_generator.etheric.name=Etheric Spiritual Generator
 tile.iinteg:spiritual_projector.name=Spiritual Projector
 tile.iinteg:machine_casing.etheric.name=Etheric Machine Casing
 tile.iinteg:etheric_casting_table.name=Etheric Casing Table

@@ -3,9 +3,11 @@ package com.moffy5612.iinteg.client.gui;
 import javax.annotation.Nullable;
 
 import com.moffy5612.iinteg.block.inventory.ContainerAdvancedToolForge;
+import com.moffy5612.iinteg.block.inventory.ContainerSpiritualGenerator;
 import com.moffy5612.iinteg.block.inventory.ContainerAdvancedPartBuilder;
 import com.moffy5612.iinteg.block.inventory.ContainerSpiritualProjector;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedToolForge;
+import com.moffy5612.iinteg.block.tileentity.TileSpiritualGenerator;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedPartBuilder;
 import com.moffy5612.iinteg.block.tileentity.TileSpiritualProjector;
 
@@ -28,6 +30,9 @@ public class IIntegGuiHandler implements IGuiHandler{
         }else if(ID == IIntegGuiList.GUI_SPIRITUAL_PROJECTOR){
             TileSpiritualProjector tsp = (TileSpiritualProjector)world.getTileEntity(new BlockPos(x, y, z));
             return new ContainerSpiritualProjector(player.inventory, tsp);
+        }else if(ID == IIntegGuiList.GUI_SPIRITUAL_GENERATOR){
+            TileSpiritualGenerator tsg = (TileSpiritualGenerator)world.getTileEntity(new BlockPos(x, y, z));
+            return new ContainerSpiritualGenerator(player.inventory, tsg);
         }
         return null;
     }
@@ -44,6 +49,9 @@ public class IIntegGuiHandler implements IGuiHandler{
         }else if(ID == IIntegGuiList.GUI_SPIRITUAL_PROJECTOR){
             TileSpiritualProjector tsp = (TileSpiritualProjector)world.getTileEntity(new BlockPos(x, y, z));
             return new GuiSpiritualProjector(player.inventory, tsp);
+        }else if(ID == IIntegGuiList.GUI_SPIRITUAL_GENERATOR){
+            TileSpiritualGenerator tsg = (TileSpiritualGenerator)world.getTileEntity(new BlockPos(x, y, z));
+            return new GuiSpiritualGenerator(player.inventory, tsg);
         }
         return null;
     }

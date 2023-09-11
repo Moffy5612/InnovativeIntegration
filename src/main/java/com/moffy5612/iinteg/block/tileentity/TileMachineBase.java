@@ -20,14 +20,13 @@ import net.minecraftforge.items.ItemStackHandler;
 public abstract class TileMachineBase extends ModTileEntityBase implements ITickable{
 
     public static final int BASE_AMOUNT_ENERGY_STORAGE = 20000;
-    public static final int BASE_AMOUNT_ENERGY_TRANSFER = 50;
-    public static final int MAX_ENERGY_TRANSFER = 300000;
+    public static final int BASE_AMOUNT_ENERGY_TRANSFER = 10;
+    public static final int MAX_ENERGY_TRANSFER = Integer.MAX_VALUE;
 
     public String name;
     public ModTier tier;
     public MachineEnergyStorage energyStorage;
     public boolean isGenerator;
-    public int transferredEnergy;
     public MachineInventory inventory;
     
     public TileMachineBase(String name, @Nullable ModTier tier, boolean isGenerator, int inventorySize){
@@ -35,10 +34,10 @@ public abstract class TileMachineBase extends ModTileEntityBase implements ITick
         this.name = name;
         this.tier = tier;
         this.isGenerator = isGenerator;
-        this.transferredEnergy = 0;
         this.inventory = new MachineInventory(inventorySize);
-        this.transferredEnergy = getEnergyTransfer(0);
         this.energyStorage = new MachineEnergyStorage(isGenerator);
+
+        this.setEnergyTransfer(0);
     }
 
     @Override
@@ -89,7 +88,7 @@ public abstract class TileMachineBase extends ModTileEntityBase implements ITick
         if(te != null){
             if(te.hasCapability(CapabilityEnergy.ENERGY, EnumFacing.getFacingFromVector(vector[0], vector[1], vector[2]))){
                 IEnergyStorage capEnergyStorage = te.getCapability(CapabilityEnergy.ENERGY, EnumFacing.getFacingFromVector(vector[0], vector[1], vector[2]));
-                if(capEnergyStorage != null && capEnergyStorage.canReceive())capEnergyStorage.receiveEnergy(this.transferredEnergy, false);
+                if(capEnergyStorage != null && capEnergyStorage.canReceive())capEnergyStorage.receiveEnergy(this.energyStorage.transferRate, false);
             }
         }
     }
@@ -114,16 +113,16 @@ public abstract class TileMachineBase extends ModTileEntityBase implements ITick
             if(te.hasCapability(CapabilityEnergy.ENERGY, EnumFacing.getFacingFromVector(vector[0], vector[1], vector[2]))){
                 IEnergyStorage capEnergyStorage = te.getCapability(CapabilityEnergy.ENERGY, EnumFacing.getFacingFromVector(vector[0], vector[1], vector[2]));
                 if(capEnergyStorage != null && capEnergyStorage.canExtract()){
-                    int extracted = capEnergyStorage.extractEnergy(this.transferredEnergy, false);
+                    int extracted = capEnergyStorage.extractEnergy(this.energyStorage.transferRate, false);
                     this.energyStorage.receiveEnergy(extracted, false);
                 }
             }
         }
     }
 
-    public int getEnergyTransfer(int itemAmount){
-        if(tier == null) return BASE_AMOUNT_ENERGY_TRANSFER * (int)Math.pow(1.05, (double)itemAmount);
-        else return BASE_AMOUNT_ENERGY_TRANSFER * (int)Math.pow(10, (double)tier.getIndex()) * (int)Math.pow(1.05, (double)itemAmount);
+    public void setEnergyTransfer(int itemAmount){
+        if(tier == null) this.energyStorage.setEnergyTransfer(BASE_AMOUNT_ENERGY_TRANSFER * (int)Math.pow(1.05, (double)itemAmount));
+        else this.energyStorage.setEnergyTransfer(BASE_AMOUNT_ENERGY_TRANSFER * (int)Math.pow(5, (double)tier.getIndex()) * (int)Math.pow(1.05, (double)itemAmount));
     };
 
     public void onSlotChanged(){
