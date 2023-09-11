@@ -6,6 +6,7 @@ import java.util.List;
 import com.moffy5612.iinteg.Reference;
 import com.moffy5612.iinteg.block.states.ModMachineBlockState;
 import com.moffy5612.iinteg.block.tileentity.ModTileEntityBase;
+import com.moffy5612.iinteg.block.tileentity.TileMachineBase;
 import com.moffy5612.iinteg.misc.ModTier;
 
 import net.minecraft.block.SoundType;
@@ -15,6 +16,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
@@ -101,4 +103,17 @@ public abstract class ModMachineBlockBase extends ModBlockBase implements IModMu
 	public boolean isOpaqueCube(IBlockState state){
 		return false;
 	}
+
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        TileMachineBase tileMachineBase = (TileMachineBase)worldIn.getTileEntity(pos);
+        if(tileMachineBase != null){
+            for(int i = 0; i < tileMachineBase.inventory.getSlots(); i++){
+                ItemStack stack = tileMachineBase.inventory.getStackInSlot(i);
+                EntityItem entityItem = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), stack);
+                worldIn.spawnEntity(entityItem);
+            }
+        }
+        super.breakBlock(worldIn, pos, state);
+    }
 }

@@ -10,7 +10,6 @@ import com.moffy5612.iinteg.handler.ModItemHandler;
 import com.moffy5612.iinteg.misc.ModTier;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -51,19 +50,6 @@ public class SpiritualGenerator extends ModMachineBlockBase{
         }
 
         return false;
-    }
-
-    @Override
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        TileSpiritualGenerator tsg = (TileSpiritualGenerator)worldIn.getTileEntity(pos);
-        if(tsg != null){
-            for(int i = 0; i < tsg.inventory.getSlots(); i++){
-                ItemStack stack = tsg.inventory.getStackInSlot(i);
-                EntityItem entityItem = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ());
-                entityItem.setItem(stack);
-                worldIn.spawnEntity(entityItem);
-            }
-        }
     }
 
     @Override

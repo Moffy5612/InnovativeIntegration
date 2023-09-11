@@ -8,9 +8,7 @@ import com.moffy5612.iinteg.client.gui.IIntegGuiList;
 import com.moffy5612.iinteg.misc.ModTier;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -34,19 +32,6 @@ public class AdvancedToolForge extends ModMachineBlockBase{
         }
         
         return true;
-    }
-
-    @Override
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        TileAdvancedToolForge trf = (TileAdvancedToolForge)worldIn.getTileEntity(pos);
-        if(trf != null){
-            for(int i = 0; i < trf.inventory.getSlots(); i++){
-                ItemStack stack = trf.inventory.getStackInSlot(i);
-                EntityItem entityItem = new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ());
-                entityItem.setItem(stack);
-                worldIn.spawnEntity(entityItem);
-            }
-        }
     }
 
     @Override
