@@ -8,9 +8,12 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class SpiritualProjectorRecipe extends ModRecipeListBase{
+
+    public ItemStack crystalBall;
+
     public SpiritualProjectorRecipe(){
 
-        ItemStack crystalBall = new ItemStack(ModItemHandler.CRYSTAL_BALL, 1, 0);
+        crystalBall = new ItemStack(ModItemHandler.CRYSTAL_BALL, 1, 0);
         CapabilityCrystalBall capabilityCrystalBall = crystalBall.getCapability(CapabilityCrystalBall.CAPABILITY_CRYSTAL_BALL, null);
         if(capabilityCrystalBall != null){
             capabilityCrystalBall.hasOwner = true;

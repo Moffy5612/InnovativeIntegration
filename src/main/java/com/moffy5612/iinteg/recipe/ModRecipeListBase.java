@@ -1,11 +1,14 @@
 package com.moffy5612.iinteg.recipe;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import javax.annotation.Nullable;
 
 import javafx.util.Pair;
 import net.minecraft.item.ItemStack;
@@ -39,7 +42,7 @@ public class ModRecipeListBase{
     }
 
     public void addRecipe(String key, ItemStack result, ItemStack... materials){
-        this.addRecipe(key, new ModRecipe(result, materials));
+        this.addRecipe(key, new ModRecipe(key, result, materials));
     }
 
     public void removeRecipe(String key){
@@ -50,11 +53,24 @@ public class ModRecipeListBase{
         return recipes.get(key);
     }
 
+    @Nullable
+    public ModRecipe getRecipe(ItemStack... materials){
+        List<ItemStack>materialList = Arrays.asList(materials);
+        for(ModRecipe recipe : this.recipes.values()){
+            if(recipe.isMaterialsEquals(materialList)){
+                return recipe;
+            }
+        }
+        return null;
+    }
+
     public class ModRecipe{
+        public String key;
         public List<ItemStack> material;
         public ItemStack result;
 
-        public ModRecipe(ItemStack result, ItemStack... materials){
+        public ModRecipe(String key, ItemStack result, ItemStack... materials){
+            this.key = key;
             this.material = new ArrayList<ItemStack>();
             for(ItemStack material : materials){
                 this.material.add(material);

@@ -1,8 +1,5 @@
 package com.moffy5612.iinteg.block.tileentity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -25,16 +22,16 @@ public class TileSpiritualProjector extends ModTileEntityBase implements ITickab
     public static final int PROGRESS_MAX = 256;
     public static final String NAME = "spiritual_projector";
     
-    public TileSpiritualProjector instance;
     public SpiritualProjectorItemStackHandler inventory = new SpiritualProjectorItemStackHandler(3);
     public boolean hasSkyLight;
+    @Nullable public ModRecipe recipe;
     public int progress;
 
     public TileSpiritualProjector(){
         super(NAME);
         hasSkyLight = false;
         progress = 0;
-        instance = this;
+        recipe = null;
     }
 
     @Override
@@ -80,41 +77,25 @@ public class TileSpiritualProjector extends ModTileEntityBase implements ITickab
     }
 
     @Override
+    @SuppressWarnings("null")
     public void update() {
-        boolean hasRecipe = false;
-
         this.setSkyLight();
         if(this.hasSkyLight){
             if(!this.inventory.getStackInSlot(0).isEmpty() && !this.inventory.getStackInSlot(1).isEmpty()){
-                List<ItemStack> materials = new ArrayList<>();
-                materials.add(this.inventory.getStackInSlot(0));
-                materials.add(this.inventory.getStackInSlot(1));
-                for(ModRecipe recipe : ModRecipeHandler.SPIRITUAL_PROJECTOR_RECIPE.recipes.values()){
-                    if(recipe.isMaterialsEquals(materials)){
-                        if(this.inventory.getStackInSlot(2).isEmpty() || ItemStack.areItemsEqual(this.inventory.getStackInSlot(2), recipe.result)){
-                            hasRecipe = true;
-                            progress++;
-                            if(progress >= PROGRESS_MAX){
-                                progress = 0;
-                                ItemStack empty = ItemStack.EMPTY;
-                                ItemStack resultStack = recipe.result.copy();
-                                if(empty != null && resultStack != null){
-                                    if(this.inventory.getStackInSlot(1).getCount() == 1) this.inventory.setStackInSlot(1, empty);
-                                    else this.inventory.getStackInSlot(1).setCount(this.inventory.getStackInSlot(1).getCount() - 1);
-                                
-                                    if(this.inventory.getStackInSlot(2).isEmpty())this.inventory.setStackInSlot(2, resultStack);
-                                    else this.inventory.getStackInSlot(2).setCount(this.inventory.getStackInSlot(2).getCount() + 1);
-                                }
+                if(this.recipe != null){
+                    if(this.inventory.getStackInSlot(2).isEmpty() || ItemStack.areItemsEqual(this.inventory.getStackInSlot(2), recipe.result)){
+                        progress++;
+                        if(progress >= PROGRESS_MAX){
+                            progress = 0;
+                            ItemStack resultStack = recipe.result.copy();
+                            if(resultStack != null){
+                                decrStackInSlot(1);
+                                incrStackInSlot(2, resultStack);
                             }
                         }
-                        
                     }
                 }
             }
-        }
-
-        if(!hasRecipe){
-            progress = 0;
         }
     }
 
@@ -125,6 +106,18 @@ public class TileSpiritualProjector extends ModTileEntityBase implements ITickab
         }else{
             this.hasSkyLight = false;
         }
+    }
+
+    @SuppressWarnings("null")
+    public void decrStackInSlot(int index){
+        if(this.inventory.getStackInSlot(index).getCount() == 1) this.inventory.setStackInSlot(index, ItemStack.EMPTY);
+        else this.inventory.getStackInSlot(index).setCount(this.inventory.getStackInSlot(index).getCount() - 1);
+    }
+
+    @SuppressWarnings("null")
+    public void incrStackInSlot(int index, ItemStack stack){
+        if(this.inventory.getStackInSlot(index).isEmpty())this.inventory.setStackInSlot(index, stack);
+        else this.inventory.getStackInSlot(index).setCount(this.inventory.getStackInSlot(index).getCount() + 1);
     }
 
     public class SpiritualProjectorItemStackHandler extends ItemStackHandler{
@@ -138,8 +131,14 @@ public class TileSpiritualProjector extends ModTileEntityBase implements ITickab
         @Override
         protected void onContentsChanged(int slot) {
             super.onContentsChanged(slot);
-            instance.markDirty();
+            markDirty();
             world.markAndNotifyBlock(pos,null, world.getBlockState(pos),world.getBlockState(pos),2);
+
+            recipe = ModRecipeHandler.SPIRITUAL_PROJECTOR_RECIPE.getRecipe(
+                inventory.getStackInSlot(0),
+                inventory.getStackInSlot(1)
+            );
+            if(recipe == null)progress = 0;
         }
 
         @Override

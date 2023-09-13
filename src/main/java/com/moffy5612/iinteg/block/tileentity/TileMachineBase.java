@@ -48,7 +48,7 @@ public abstract class TileMachineBase extends ModTileEntityBase implements ITick
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-        compound.setInteger("tier", this.tier.getIndex());
+        if(this.tier != null)compound.setInteger("tier", this.tier.getIndex());
         return super.writeToNBT(compound);
     }
 

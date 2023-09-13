@@ -7,7 +7,6 @@ import com.moffy5612.iinteg.block.tileentity.TileMachineBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.Slot;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
@@ -27,17 +26,7 @@ public class ContainerAdvancedPartBuilder extends ModContainerBase{
 		
 		this.addSlotToContainer(new SlotAdvancedPartBuilder(trpb, 3, 177, 6));
 
-		
-
-        for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 9; j++) {
-				this.addSlotToContainer(new Slot(inventory, i * 9 + j + 9, 8 + j * 18, 84 + i * 18));
-			}
-		}
-
-		for (int k = 0; k < 9; k++) {
-			this.addSlotToContainer(new Slot(inventory, k, 8 + k * 18, 142));
-		}
+		this.addPlayerInventory(inventory, 8, 84);
     }
     
     @Override

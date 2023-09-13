@@ -5,4 +5,5 @@ public class IIntegGuiList {
     public static final int GUI_ADVANCED_TOOL_FORGE = 1;
     public static final int GUI_SPIRITUAL_PROJECTOR = 2;
     public static final int GUI_SPIRITUAL_GENERATOR = 3;
+    public static final int GUI_ADVANCED_PROJECTOR = 4;
 }

@@ -5,10 +5,12 @@ import javax.annotation.Nullable;
 import com.moffy5612.iinteg.block.inventory.ContainerAdvancedToolForge;
 import com.moffy5612.iinteg.block.inventory.ContainerSpiritualGenerator;
 import com.moffy5612.iinteg.block.inventory.ContainerAdvancedPartBuilder;
+import com.moffy5612.iinteg.block.inventory.ContainerAdvancedProjector;
 import com.moffy5612.iinteg.block.inventory.ContainerSpiritualProjector;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedToolForge;
 import com.moffy5612.iinteg.block.tileentity.TileSpiritualGenerator;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedPartBuilder;
+import com.moffy5612.iinteg.block.tileentity.TileAdvancedProjector;
 import com.moffy5612.iinteg.block.tileentity.TileSpiritualProjector;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,6 +35,9 @@ public class IIntegGuiHandler implements IGuiHandler{
         }else if(ID == IIntegGuiList.GUI_SPIRITUAL_GENERATOR){
             TileSpiritualGenerator tsg = (TileSpiritualGenerator)world.getTileEntity(new BlockPos(x, y, z));
             return new ContainerSpiritualGenerator(player.inventory, tsg);
+        }else if(ID == IIntegGuiList.GUI_ADVANCED_PROJECTOR){
+            TileAdvancedProjector tap = (TileAdvancedProjector)world.getTileEntity(new BlockPos(x, y, z));
+            return new ContainerAdvancedProjector(player.inventory, tap);
         }
         return null;
     }
@@ -52,6 +57,9 @@ public class IIntegGuiHandler implements IGuiHandler{
         }else if(ID == IIntegGuiList.GUI_SPIRITUAL_GENERATOR){
             TileSpiritualGenerator tsg = (TileSpiritualGenerator)world.getTileEntity(new BlockPos(x, y, z));
             return new GuiSpiritualGenerator(player.inventory, tsg);
+        }else if(ID == IIntegGuiList.GUI_ADVANCED_PROJECTOR){
+            TileAdvancedProjector tap = (TileAdvancedProjector)world.getTileEntity(new BlockPos(x, y, z));
+            return new GuiAdvancedProjector(player.inventory, tap);
         }
         return null;
     }
