@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.moffy5612.iinteg.item.CrystalBall;
 import com.moffy5612.iinteg.item.Material;
+import com.moffy5612.iinteg.item.ModularKnapsack;
 import com.moffy5612.iinteg.item.ArcaneCircuit;
 import com.moffy5612.iinteg.item.ArcaneCondenser;
 import com.moffy5612.iinteg.misc.annotation.IIntegContentInstance;
@@ -20,4 +21,13 @@ public class ModItemHandler {
     @IIntegContentInstance(contentClass = ArcaneCircuit.class) public static Item ARCANE_CIRCUIT;
     @IIntegContentInstance(contentClass = ArcaneCondenser.class)public static Item ARCANE_CONDENSER;
     @IIntegContentInstance(contentClass = CrystalBall.class) public static Item CRYSTAL_BALL;
+    @IIntegContentInstance(contentClass = ModularKnapsack.class) public static Item MODULAR_KNAPSACK;
+
+    public static void registerItem(Item item){
+        REG_ITEMS.add(item);
+    }
+
+    public static void registerItemBlock(ItemBlock itemBlock){
+        REG_BLOCK_ITEMS.add(itemBlock);
+    }
 }

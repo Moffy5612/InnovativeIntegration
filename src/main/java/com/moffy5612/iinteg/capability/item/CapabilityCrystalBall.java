@@ -4,7 +4,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.moffy5612.iinteg.capability.ModCapabilityBase;
-import com.moffy5612.iinteg.handler.ModCapabilityHandler;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -22,7 +21,6 @@ public class CapabilityCrystalBall extends ModCapabilityBase{
     public String ownerName;
 
     public CapabilityCrystalBall(){
-        ModCapabilityHandler.REG_CAPABILITIES.add(this);
         this.hasOwner = false;
         this.ownerName = "";
     }

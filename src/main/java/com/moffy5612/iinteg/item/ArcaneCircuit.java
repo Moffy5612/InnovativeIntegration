@@ -17,8 +17,6 @@ public class ArcaneCircuit extends ModItemBase implements IModMultiTexturedItem{
         super(NAME);
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
-
-        this.register();
     }
 
     @Override

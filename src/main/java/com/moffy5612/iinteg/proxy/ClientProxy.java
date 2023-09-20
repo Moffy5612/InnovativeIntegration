@@ -2,6 +2,8 @@ package com.moffy5612.iinteg.proxy;
 
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
+
 import com.moffy5612.iinteg.block.ModBlockBase;
 import com.moffy5612.iinteg.client.render.ItemRender;
 import com.moffy5612.iinteg.event.ModModelBakeEvent;
@@ -10,8 +12,10 @@ import com.moffy5612.iinteg.handler.ModBlockHandler;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.text.Style;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -19,6 +23,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class ClientProxy extends CommonProxy{
 
     private static final int TOOLTIP_WRAP_WIDTH = 140;
+
+    public static final KeyBinding KEY_MODULAR_KNAPSACK_GUI = new KeyBinding(
+                "key.iinteg.open_modular_knapsack_gui.desc",
+                Keyboard.KEY_M, 
+                "key.iinteg.category"
+                );
 
     @Override
     public void preInit(FMLPreInitializationEvent event){
@@ -36,6 +46,8 @@ public class ClientProxy extends CommonProxy{
     @Override
     public void init(FMLInitializationEvent event){
         super.init(event);
+
+        ClientRegistry.registerKeyBinding(KEY_MODULAR_KNAPSACK_GUI);
     }
 
     @Override

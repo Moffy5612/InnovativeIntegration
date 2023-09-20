@@ -17,8 +17,6 @@ public class ArcaneCondenser  extends ModItemBase implements IModMultiTexturedIt
         super(NAME);
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
-
-        this.register();
     }
 
     @Override

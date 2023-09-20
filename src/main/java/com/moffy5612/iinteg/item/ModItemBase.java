@@ -12,9 +12,11 @@ public abstract class ModItemBase extends Item{
         this.setRegistryName(Reference.MOD_ID, name);
         this.setUnlocalizedName(Reference.MOD_ID+":"+name);
         this.setCreativeTab(Reference.MOD_CREATIVE_TAB);
+
+        this.register();
     }
 
     public void register(){
-        ModItemHandler.REG_ITEMS.add(this);
+        ModItemHandler.registerItem(this);;
     }
 }

@@ -34,10 +34,10 @@ public abstract class ModBlockBase extends BlockContainer{
     }
 
     public void register(){
-        ModBlockHandler.REG_BLOCKS.add(this);
+        ModBlockHandler.registerBlockContainer(this);
         ModItemBlock itemBlock = new ModItemBlock(this);
         itemBlock.setRegistryName(Reference.MOD_ID, name);
-        ModItemHandler.REG_BLOCK_ITEMS.add(itemBlock);
+        ModItemHandler.registerItemBlock(itemBlock);
         ModTileEntityBase te = this.te;
         if(te != null)te.register();
     }

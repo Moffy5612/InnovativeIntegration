@@ -39,4 +39,8 @@ public class ModBlockHandler {
         requiredModIds = {"tconstruct"}
     )
     public static BlockContainer ADVANCED_TOOL_FORGE;
+
+    public static void registerBlockContainer(BlockContainer blockContainer){
+        REG_BLOCKS.add(blockContainer);
+    }
 }

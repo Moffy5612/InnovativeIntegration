@@ -3,6 +3,8 @@ package com.moffy5612.iinteg.capability;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.moffy5612.iinteg.handler.ModCapabilityHandler;
+
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -11,6 +13,10 @@ import net.minecraftforge.common.capabilities.Capability.IStorage;
 import net.minecraftforge.common.util.INBTSerializable;
 
 public abstract class ModCapabilityBase implements INBTSerializable<NBTTagCompound>{
+
+    public ModCapabilityBase(){
+        ModCapabilityHandler.registerCapability(this);
+    }
 
     @Override
     public NBTTagCompound serializeNBT() {

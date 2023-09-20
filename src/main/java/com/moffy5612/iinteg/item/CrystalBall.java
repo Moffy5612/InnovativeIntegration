@@ -31,8 +31,6 @@ public class CrystalBall extends ModItemBase{
         super(NAME);
         this.setMaxDamage(0);
         this.setMaxStackSize(1);
-
-        this.register();
     }
 
     @Override
