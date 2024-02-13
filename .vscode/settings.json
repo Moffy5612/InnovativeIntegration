@@ -3,5 +3,9 @@
     "java.configuration.updateBuildConfiguration": "interactive",
     "cSpell.words": [
         "iinteg"
+    ],
+    "java.compile.nullAnalysis.nonnullbydefault": [
+        "org.eclipse.jdt.annotation.NonNullByDefault",
+        "org.springframework.lang.NonNullApi"
     ]
 }

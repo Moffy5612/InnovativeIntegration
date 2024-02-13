@@ -10,6 +10,7 @@ import slimeknights.tconstruct.library.events.TinkerCraftingEvent;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import slimeknights.tconstruct.library.utils.ToolBuilder;
 
+@SuppressWarnings("null")
 public class ConarmMethods {
     public static boolean tryRepairArmor(TileAdvancedToolForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);

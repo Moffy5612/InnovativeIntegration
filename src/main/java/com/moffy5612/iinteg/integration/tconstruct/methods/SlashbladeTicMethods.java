@@ -12,6 +12,7 @@ import net.minecraft.util.NonNullList;
 import slimeknights.tconstruct.library.events.TinkerCraftingEvent;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 
+@SuppressWarnings("null")
 public class SlashbladeTicMethods {
     public static boolean tryRepairBlade(TileAdvancedToolForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);

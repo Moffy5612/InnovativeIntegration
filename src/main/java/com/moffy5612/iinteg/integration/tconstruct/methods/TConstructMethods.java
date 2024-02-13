@@ -8,6 +8,7 @@ import slimeknights.tconstruct.library.events.TinkerCraftingEvent;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import slimeknights.tconstruct.library.utils.ToolBuilder;
 
+@SuppressWarnings("null")
 public class TConstructMethods {
     public static boolean tryRepairTool(com.moffy5612.iinteg.block.tileentity.TileAdvancedToolForge trf){
         ItemStack toolStack = trf.inventory.getStackInSlot(0);

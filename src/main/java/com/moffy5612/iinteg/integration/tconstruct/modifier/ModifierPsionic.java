@@ -27,7 +27,8 @@ public class ModifierPsionic extends ModArmorModifierBase{
 
         this.register();
     }
-
+    
+    @SuppressWarnings("null")
     @Override
     public boolean canApplyCustom(ItemStack stack) {
         return super.canApplyCustom(stack) && (EntityLiving.getSlotForItemStack(stack) == EntityEquipmentSlot.CHEST
@@ -35,16 +36,19 @@ public class ModifierPsionic extends ModArmorModifierBase{
             || EntityLiving.getSlotForItemStack(stack) == EntityEquipmentSlot.FEET);
     }
 
+    @SuppressWarnings("null")
     @Override
     public void onArmorTick(ItemStack tool, World world, EntityPlayer player) {
         if(EntityLiving.getSlotForItemStack(tool) == EntityEquipmentSlot.LEGS)cast(player, tool);
     }
 
+    @SuppressWarnings("null")
     @Override
     public void onJumping(ItemStack armor, EntityPlayer player, LivingJumpEvent evt) {
         if(EntityLiving.getSlotForItemStack(armor) == EntityEquipmentSlot.FEET)cast(player, armor);
     }
 
+    @SuppressWarnings("null")
     @Override
     public float onDamaged(ItemStack armor, EntityPlayer player, DamageSource source, float damage, float newDamage,
             LivingDamageEvent evt) {
