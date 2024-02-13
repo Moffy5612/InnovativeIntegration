@@ -4,8 +4,12 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import baubles.api.BaubleType;
+import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.BaublesCapabilities;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 
@@ -22,5 +26,11 @@ public class ModularKnapsackBauble{
     
     public static <T> boolean isBaublesCapability(Capability<T> capability){
         return capability == BaublesCapabilities.CAPABILITY_ITEM_BAUBLE;
+    }
+
+    public static ItemStack getItemStackInBaublesSlot(EntityPlayer player, Item item){
+        int equippedSlot = BaublesApi.isBaubleEquipped(player, item);
+        if(equippedSlot >= 0)return BaublesApi.getBaublesHandler(player).getStackInSlot(equippedSlot);
+        else return ItemStack.EMPTY;
     }
 }

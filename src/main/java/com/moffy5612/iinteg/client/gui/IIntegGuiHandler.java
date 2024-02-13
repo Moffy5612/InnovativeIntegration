@@ -1,5 +1,8 @@
 package com.moffy5612.iinteg.client.gui;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.annotation.Nullable;
 
 import com.moffy5612.iinteg.block.inventory.ContainerAdvancedToolForge;
@@ -13,12 +16,16 @@ import com.moffy5612.iinteg.block.tileentity.TileAdvancedPartBuilder;
 import com.moffy5612.iinteg.block.tileentity.TileAdvancedProjector;
 import com.moffy5612.iinteg.block.tileentity.TileSpiritualProjector;
 
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class IIntegGuiHandler implements IGuiHandler{
+
+    public final Set<ModuleContainerPair> REG_MODULE_GUI = new HashSet<>();
 
     @Override
     @Nullable
@@ -64,4 +71,7 @@ public class IIntegGuiHandler implements IGuiHandler{
         return null;
     }
     
+    public void addModuleGui(int id, Class<? extends GuiContainer> guiContainerClass, Class<? extends Container> containerClass){
+        REG_MODULE_GUI.add(new ModuleContainerPair(id, guiContainerClass, containerClass));
+    }
 }

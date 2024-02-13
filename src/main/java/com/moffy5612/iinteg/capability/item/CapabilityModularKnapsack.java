@@ -62,7 +62,7 @@ public class CapabilityModularKnapsack extends ModCapabilityBase{
 
     private class ModuleInventory extends ItemStackHandler{
         public ModuleInventory(){
-            super(8);
+            super(12);
         }
 
         @Override
