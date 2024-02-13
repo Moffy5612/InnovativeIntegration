@@ -15,5 +15,5 @@ public class ModTraitHandler {
         contentClass = ModifierPsionic.class,
         requiredModIds = {"conarm", "psi"}
     )
-    public static ModifierPsionic PSIONIC;
+    public static ArmorModifierTrait PSIONIC;
 }
